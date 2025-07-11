@@ -1,0 +1,55 @@
+// POPÜLER ÜRÜNLER
+color: 'white', fontSize: 24, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+// YAZILIM ÇÖZÜMLERİ
+color: 'white', fontSize: 24, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+// Hesabım
+color: 'black', fontSize: 16, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+// Sepetim
+color: 'black', fontSize: 16, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+// TEKNİK DESTEK
+color: 'white', fontSize: 24, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+// BİLGİSAYAR DONANIMI
+color: 'white', fontSize: 24, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+//  
+color: 'white', fontSize: 24, fontFamily: 'Inter', fontWeight: '400', wordWrap: 'break-word'
+---
+// TÜM HAKLARI SAKLIDIR - 2025
+color: 'white', fontSize: 14, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+// Anasayfa
+color: 'white', fontSize: 20, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+// Hakkımızda
+color: 'white', fontSize: 20, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+// İletişim Bilgileri
+color: 'white', fontSize: 20, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+// ÜRÜN AÇIKLAMASI
+color: 'rgba(0, 0, 0, 0.20)', fontSize: 32, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+// Satın Al
+color: 'white', fontSize: 24, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+// Markanı dijitalde yansıtacak profesyonel bir web sitesiyle öne çık!
+ Web Tasarım Paketimiz ile işletmenize özel, kullanıcı dostu ve mobil uyumlu bir web sitesi hazırlıyoruz. Hem estetik hem de işlevsel çözümlerle markanızı dijitalde bir adım öne taş ıyoruz.<br/>Paket İçeriği:<br/>
+color: 'black', fontSize: 20, fontFamily: 'Afacad', fontWeight: '400', wordWrap: 'break-word'
+---
+// Özgün ve modern tasarım<br/>Mobil (responsive) uyumlu arayüz<br/>Hızlı ve SEO uyumlu sayfalar<br/>Ana sayfa + Hakkımızda + Hizmetler + İletişim gibi temel sayfalar<br/>İletişim/teklif formu entegrasyonu<br/>Sosyal medya bağlantıları<br/>Temel güvenlik önlemleri<br/>Yayına alma ve destek süreci<br/>
+color: 'black', fontSize: 20, fontFamily: 'Afacad', fontWeight: '400', wordWrap: 'break-word'
+---
+// Kimler için uygun?
+ Yeni girişimciler, küçük işletmeler, kişisel portfolyo sahibi olmak isteyenler ve dijitalde güçlü bir başlangıç yapmak isteyen herkes için idealdir.<br/>Not: Pakete ek olarak; e-ticaret, çok dilli yapı, blog sistemi gibi modüllerle web sitenizi büyütebilirsiniz.
+color: 'black', fontSize: 20, fontFamily: 'Afacad', fontWeight: '400', wordWrap: 'break-word'
+---
+// Web Tasarımı Paketi
+color: 'black', fontSize: 24, fontFamily: 'Jacques Francois', fontWeight: '400', wordWrap: 'break-word'
+---
+// 850,95 TL
+color: 'black', fontSize: 24, fontFamily: 'ABeeZee', fontWeight: '400', wordWrap: 'break-word'

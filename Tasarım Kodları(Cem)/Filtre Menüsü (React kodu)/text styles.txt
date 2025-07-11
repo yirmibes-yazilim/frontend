@@ -1,0 +1,116 @@
+// POPÜLER ÜRÜNLER
+color: 'white', fontSize: 24, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+// YAZILIM ÇÖZÜMLERİ
+color: 'white', fontSize: 24, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+// Popüler Ürünler
+color: 'black', fontSize: 64, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+// Ürünleri Filtrele
+color: 'black', fontSize: 36, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+// Yazılım Çözümleri
+color: 'black', fontSize: 64, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+// Bilgisayar Donanımı
+color: 'black', fontSize: 64, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+// TEKNİK DESTEK
+color: 'white', fontSize: 24, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+// BİLGİSAYAR DONANIMI
+color: 'white', fontSize: 24, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+//  
+color: 'white', fontSize: 24, fontFamily: 'Inter', fontWeight: '400', wordWrap: 'break-word'
+---
+// TÜM HAKLARI SAKLIDIR - 2025
+color: 'white', fontSize: 14, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+// Anasayfa
+color: 'white', fontSize: 20, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+// Hakkımızda
+color: 'white', fontSize: 20, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+// İletişim Bilgileri
+color: 'white', fontSize: 20, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+// Web Tasarımı Paketi
+color: 'black', fontSize: 24, fontFamily: 'Jacques Francois', fontWeight: '400', wordWrap: 'break-word'
+---
+// Web Tasarımı Paketi
+color: 'black', fontSize: 20, fontFamily: 'Jacques Francois', fontWeight: '400', wordWrap: 'break-word'
+---
+// 850,95 TL
+color: 'black', fontSize: 24, fontFamily: 'ABeeZee', fontWeight: '400', wordWrap: 'break-word'
+---
+// 850,95 TL
+color: 'black', fontSize: 24, fontFamily: 'ABeeZee', fontWeight: '400', wordWrap: 'break-word'
+---
+// 850,95 TL
+color: 'black', fontSize: 24, fontFamily: 'ABeeZee', fontWeight: '400', wordWrap: 'break-word'
+---
+// 850,95 TL
+color: 'black', fontSize: 24, fontFamily: 'ABeeZee', fontWeight: '400', wordWrap: 'break-word'
+---
+// 850,95 TL
+color: 'black', fontSize: 24, fontFamily: 'ABeeZee', fontWeight: '400', wordWrap: 'break-word'
+---
+// 850,95 TL
+color: 'black', fontSize: 24, fontFamily: 'ABeeZee', fontWeight: '400', wordWrap: 'break-word'
+---
+// 850,95 TL
+color: 'black', fontSize: 24, fontFamily: 'ABeeZee', fontWeight: '400', wordWrap: 'break-word'
+---
+// 850,95 TL
+color: 'black', fontSize: 24, fontFamily: 'ABeeZee', fontWeight: '400', wordWrap: 'break-word'
+---
+// 850,95 TL
+color: 'black', fontSize: 24, fontFamily: 'ABeeZee', fontWeight: '400', wordWrap: 'break-word'
+---
+// Pos  Yazılımı
+color: 'black', fontSize: 24, fontFamily: 'Jacques Francois', fontWeight: '400', wordWrap: 'break-word'
+---
+// Tasıt Takip <br/>Sistemleri
+color: 'black', fontSize: 24, fontFamily: 'Jacques Francois', fontWeight: '400', wordWrap: 'break-word'
+---
+// Laptop Tamiri
+color: 'black', fontSize: 24, fontFamily: 'Jacques Francois', fontWeight: '400', wordWrap: 'break-word'
+---
+// Laptop Tamiri
+color: 'black', fontSize: 24, fontFamily: 'Jacques Francois', fontWeight: '400', wordWrap: 'break-word'
+---
+// Bilgisayar Toplama
+color: 'black', fontSize: 24, fontFamily: 'Jacques Francois', fontWeight: '400', wordWrap: 'break-word'
+---
+// Bilgisayar Formatlama
+color: 'black', fontSize: 24, fontFamily: 'Jacques Francois', fontWeight: '400', wordWrap: 'break-word'
+---
+// Mobil Uygulama<br/>Arayüz Yapımı
+color: 'black', fontSize: 24, fontFamily: 'Jacques Francois', fontWeight: '400', wordWrap: 'break-word'
+---
+// Hesabım
+color: 'black', fontSize: 16, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+// Sepetim
+color: 'black', fontSize: 16, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+// Sıralama Ölçütü
+color: 'black', fontSize: 32, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+// Fiyat
+color: 'black', fontSize: 32, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+// En yüksek 1000 TL
+color: 'black', fontSize: 24, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+// 500 TL üzeri
+color: 'black', fontSize: 24, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+// Fiyat: düşükten yükseğe
+color: 'black', fontSize: 24, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+// Fiyat: yüksekten düşüğe
+color: 'black', fontSize: 24, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'

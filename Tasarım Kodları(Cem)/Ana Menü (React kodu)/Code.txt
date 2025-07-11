@@ -1,0 +1,87 @@
+<div style={{width: '100%', height: '100%', position: 'relative', background: 'white', overflow: 'hidden'}}>
+    <img style={{width: 508, height: 194, left: 510, top: 0, position: 'absolute'}} src="https://placehold.co/508x194" />
+    <div style={{width: 1440, height: 61, left: 0, top: 219, position: 'absolute', background: '#00ADF0'}} />
+    <div style={{width: 1440, height: 119, left: 0, top: 2776, position: 'absolute', background: '#00ADF0'}} />
+    <div style={{left: 68, top: 235, position: 'absolute', color: 'white', fontSize: 24, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'}}>POPÜLER ÜRÜNLER</div>
+    <div style={{left: 411, top: 235, position: 'absolute', color: 'white', fontSize: 24, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'}}>YAZILIM ÇÖZÜMLERİ</div>
+    <div style={{width: 928, left: 535, top: 462, position: 'absolute', color: 'black', fontSize: 64, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'}}>Popüler Ürünler</div>
+    <div style={{width: 928, left: 478, top: 1319, position: 'absolute', color: 'black', fontSize: 64, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'}}>Yazılım Çözümleri</div>
+    <div style={{width: 928, left: 460, top: 2136, position: 'absolute', color: 'black', fontSize: 64, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'}}>Bilgisayar Donanımı</div>
+    <div style={{left: 1151, top: 235, position: 'absolute', color: 'white', fontSize: 24, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'}}>TEKNİK DESTEK</div>
+    <div style={{left: 770, top: 235, position: 'absolute', color: 'white', fontSize: 24, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'}}>BİLGİSAYAR DONANIMI</div>
+    <div style={{left: 898, top: 229, position: 'absolute', color: 'white', fontSize: 24, fontFamily: 'Inter', fontWeight: '400', wordWrap: 'break-word'}}> </div>
+    <div style={{width: 289, height: 65, left: 155, top: 82, position: 'absolute', background: '#E6E5E5', borderRadius: 70}} />
+    <div style={{width: 33, height: 30.03, left: 172, top: 97, position: 'absolute', background: '#014A8B'}} />
+    <img style={{width: 42, height: 31, left: 462, top: 971, position: 'absolute'}} src="https://placehold.co/42x31" />
+    <img style={{width: 42, height: 31, left: 910, top: 985, position: 'absolute'}} src="https://placehold.co/42x31" />
+    <img style={{width: 42, height: 31, left: 1310, top: 985, position: 'absolute'}} src="https://placehold.co/42x31" />
+    <img style={{width: 42, height: 31, left: 1259, top: 1808, position: 'absolute'}} src="https://placehold.co/42x31" />
+    <img style={{width: 42, height: 31, left: 1297, top: 2626, position: 'absolute'}} src="https://placehold.co/42x31" />
+    <img style={{width: 42, height: 31, left: 911, top: 2626, position: 'absolute'}} src="https://placehold.co/42x31" />
+    <img style={{width: 42, height: 31, left: 472, top: 2623, position: 'absolute'}} src="https://placehold.co/42x31" />
+    <img style={{width: 42, height: 31, left: 382, top: 1835, position: 'absolute'}} src="https://placehold.co/42x31" />
+    <img style={{width: 42, height: 31, left: 951, top: 1824, position: 'absolute'}} src="https://placehold.co/42x31" />
+    <div style={{width: 24.22, height: 22.04, left: 1400, top: 762, position: 'absolute', background: 'black'}} />
+    <div style={{width: 24.22, height: 22.04, left: 1400, top: 1598, position: 'absolute', background: 'black'}} />
+    <div style={{width: 24.22, height: 22.04, left: 20, top: 1598, position: 'absolute', background: 'black'}} />
+    <div style={{width: 24.22, height: 22.04, left: 1399.61, top: 2214.81, position: 'absolute', background: 'black'}} />
+    <div style={{width: 24.22, height: 22.04, left: 21, top: 2213.34, position: 'absolute', background: 'black'}} />
+    <div style={{left: 669, top: 2866, position: 'absolute', color: 'white', fontSize: 14, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'}}>TÜM HAKLARI SAKLIDIR - 2025</div>
+    <div style={{left: 102, top: 2794, position: 'absolute', color: 'white', fontSize: 20, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'}}>Anasayfa</div>
+    <div style={{left: 102, top: 2824, position: 'absolute', color: 'white', fontSize: 20, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'}}>Hakkımızda</div>
+    <div style={{left: 396, top: 2812, position: 'absolute', color: 'white', fontSize: 20, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'}}>İletişim Bilgileri</div>
+    <div style={{width: 117, height: 39, left: 1139, top: 2836, position: 'absolute', background: 'white'}} />
+    <img style={{width: 104.74, height: 40, left: 1146, top: 2835, position: 'absolute'}} src="https://placehold.co/105x40" />
+    <img style={{width: 350, height: 350, left: 156, top: 609, position: 'absolute'}} src="https://placehold.co/350x350" />
+    <img style={{width: 350, height: 350, left: 87, top: 1445, position: 'absolute'}} src="https://placehold.co/350x350" />
+    <div style={{left: 155, top: 968, position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'Jacques Francois', fontWeight: '400', wordWrap: 'break-word'}}>Web Tasarımı Paketi</div>
+    <div style={{left: 84, top: 1828, position: 'absolute', color: 'black', fontSize: 20, fontFamily: 'Jacques Francois', fontWeight: '400', wordWrap: 'break-word'}}>Web Tasarımı Paketi</div>
+    <div style={{left: 87, top: 1869, position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'ABeeZee', fontWeight: '400', wordWrap: 'break-word'}}>850,95 TL</div>
+    <div style={{left: 611, top: 1863, position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'ABeeZee', fontWeight: '400', wordWrap: 'break-word'}}>850,95 TL</div>
+    <div style={{left: 1059, top: 1877, position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'ABeeZee', fontWeight: '400', wordWrap: 'break-word'}}>850,95 TL</div>
+    <div style={{left: 84, top: 2667, position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'ABeeZee', fontWeight: '400', wordWrap: 'break-word'}}>850,95 TL</div>
+    <div style={{left: 611, top: 2659, position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'ABeeZee', fontWeight: '400', wordWrap: 'break-word'}}>850,95 TL</div>
+    <div style={{left: 992, top: 2661, position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'ABeeZee', fontWeight: '400', wordWrap: 'break-word'}}>850,95 TL</div>
+    <div style={{left: 572, top: 1029, position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'ABeeZee', fontWeight: '400', wordWrap: 'break-word'}}>850,95 TL</div>
+    <div style={{left: 160, top: 1029, position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'ABeeZee', fontWeight: '400', wordWrap: 'break-word'}}>850,95 TL</div>
+    <div style={{left: 1046, top: 1051, position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'ABeeZee', fontWeight: '400', wordWrap: 'break-word'}}>850,95 TL</div>
+    <div style={{left: 611, top: 1823, position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'Jacques Francois', fontWeight: '400', wordWrap: 'break-word'}}>Pos  Yazılımı</div>
+    <div style={{left: 1061, top: 1804, position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'Jacques Francois', fontWeight: '400', wordWrap: 'break-word'}}>Tasıt Takip <br/>Sistemleri</div>
+    <div style={{left: 574, top: 975, position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'Jacques Francois', fontWeight: '400', wordWrap: 'break-word'}}>Laptop Tamiri</div>
+    <div style={{left: 87, top: 2617, position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'Jacques Francois', fontWeight: '400', wordWrap: 'break-word'}}>Laptop Tamiri</div>
+    <div style={{left: 611, top: 2615, position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'Jacques Francois', fontWeight: '400', wordWrap: 'break-word'}}>Bilgisayar Toplama</div>
+    <div style={{left: 979, top: 2615, position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'Jacques Francois', fontWeight: '400', wordWrap: 'break-word'}}>Bilgisayar Formatlama</div>
+    <div style={{left: 1046, top: 972, position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'Jacques Francois', fontWeight: '400', wordWrap: 'break-word'}}>Mobil Uygulama<br/>Arayüz Yapımı</div>
+    <img style={{width: 427.29, height: 285, left: 551, top: 674, position: 'absolute'}} src="https://placehold.co/427x285" />
+    <img style={{width: 427.29, height: 285, left: 87, top: 2301, position: 'absolute'}} src="https://placehold.co/427x285" />
+    <img style={{width: 325.67, height: 194, left: 1018, top: 722, position: 'absolute'}} src="https://placehold.co/326x194" />
+    <img style={{width: 567.89, height: 359, left: 483, top: 1492, position: 'absolute'}} src="https://placehold.co/568x359" />
+    <img style={{width: 270.65, height: 251, left: 1035, top: 1544, position: 'absolute'}} src="https://placehold.co/271x251" />
+    <div style={{width: 2, height: 4, left: 1122, top: 1846, position: 'absolute', background: 'black'}} />
+    <img style={{width: 390, height: 312, left: 563, top: 2288, position: 'absolute'}} src="https://placehold.co/390x312" />
+    <img style={{width: 351.59, height: 184, left: 993, top: 2352, position: 'absolute'}} src="https://placehold.co/352x184" />
+    <div style={{width: 25, height: 21.88, left: 425, top: 975, position: 'absolute', background: '#FF0000'}} />
+    <div style={{width: 25, height: 21.88, left: 873, top: 989, position: 'absolute', background: '#FF0000'}} />
+    <div style={{width: 25, height: 21.88, left: 1273, top: 989, position: 'absolute', background: '#FF0000'}} />
+    <div style={{width: 25, height: 21.88, left: 1222, top: 1812, position: 'absolute', background: '#FF0000'}} />
+    <div style={{width: 25, height: 21.88, left: 1260, top: 2630, position: 'absolute', background: '#FF0000'}} />
+    <div style={{width: 25, height: 21.88, left: 874, top: 2630, position: 'absolute', background: '#FF0000'}} />
+    <div style={{width: 25, height: 21.88, left: 435, top: 2627, position: 'absolute', background: '#FF0000'}} />
+    <div style={{width: 25, height: 21.88, left: 345, top: 1839, position: 'absolute', background: '#FF0000'}} />
+    <div style={{width: 25, height: 21.88, left: 914, top: 1828, position: 'absolute', background: '#FF0000'}} />
+    <div style={{width: 43, height: 38, left: 460, top: 967, position: 'absolute', borderRadius: 9999, border: '1px black solid'}} />
+    <div style={{width: 43, height: 38, left: 908, top: 981, position: 'absolute', borderRadius: 9999, border: '1px black solid'}} />
+    <div style={{width: 43, height: 38, left: 1308, top: 981, position: 'absolute', borderRadius: 9999, border: '1px black solid'}} />
+    <div style={{width: 43, height: 38, left: 1257, top: 1804, position: 'absolute', borderRadius: 9999, border: '1px black solid'}} />
+    <div style={{width: 43, height: 38, left: 1295, top: 2622, position: 'absolute', borderRadius: 9999, border: '1px black solid'}} />
+    <div style={{width: 43, height: 38, left: 909, top: 2622, position: 'absolute', borderRadius: 9999, border: '1px black solid'}} />
+    <div style={{width: 43, height: 38, left: 470, top: 2619, position: 'absolute', borderRadius: 9999, border: '1px black solid'}} />
+    <div style={{width: 43, height: 38, left: 380, top: 1831, position: 'absolute', borderRadius: 9999, border: '1px black solid'}} />
+    <div style={{width: 43, height: 38, left: 949, top: 1820, position: 'absolute', borderRadius: 9999, border: '1px black solid'}} />
+    <div style={{width: 928, left: 1195, top: 110, position: 'absolute', color: 'black', fontSize: 16, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'}}>Hesabım</div>
+    <div style={{width: 928, left: 1285, top: 110, position: 'absolute', color: 'black', fontSize: 16, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'}}>Sepetim</div>
+    <img style={{width: 56, height: 56, left: 1195, top: 54, position: 'absolute'}} src="https://placehold.co/56x56" />
+    <div style={{width: 36, height: 41, left: 1295, top: 62, position: 'absolute', background: 'black'}} />
+    <img style={{width: 56, height: 41, left: 136, top: 475, position: 'absolute'}} src="https://placehold.co/56x41" />
+    <div style={{width: 93, height: 68, left: 117, top: 462, position: 'absolute', borderRadius: 9999, border: '1px black solid'}} />
+</div>

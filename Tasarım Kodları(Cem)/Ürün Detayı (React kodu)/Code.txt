@@ -1,0 +1,37 @@
+<div style={{width: '100%', height: '100%', position: 'relative', background: 'white', overflow: 'hidden'}}>
+    <img style={{width: 508, height: 194, left: 510, top: 0, position: 'absolute'}} src="https://placehold.co/508x194" />
+    <div style={{width: 1440, height: 61, left: 0, top: 219, position: 'absolute', background: '#00ADF0'}} />
+    <div style={{width: 1440, height: 119, left: 0, top: 1200, position: 'absolute', background: '#00ADF0'}} />
+    <div style={{left: 68, top: 235, position: 'absolute', color: 'white', fontSize: 24, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'}}>POPÜLER ÜRÜNLER</div>
+    <div style={{left: 411, top: 235, position: 'absolute', color: 'white', fontSize: 24, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'}}>YAZILIM ÇÖZÜMLERİ</div>
+    <div style={{width: 928, left: 1195, top: 110, position: 'absolute', color: 'black', fontSize: 16, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'}}>Hesabım</div>
+    <div style={{width: 928, left: 1285, top: 110, position: 'absolute', color: 'black', fontSize: 16, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'}}>Sepetim</div>
+    <div style={{left: 1151, top: 235, position: 'absolute', color: 'white', fontSize: 24, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'}}>TEKNİK DESTEK</div>
+    <div style={{left: 770, top: 235, position: 'absolute', color: 'white', fontSize: 24, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'}}>BİLGİSAYAR DONANIMI</div>
+    <div style={{left: 898, top: 229, position: 'absolute', color: 'white', fontSize: 24, fontFamily: 'Inter', fontWeight: '400', wordWrap: 'break-word'}}> </div>
+    <div style={{width: 289, height: 65, left: 155, top: 82, position: 'absolute', background: '#E6E5E5', borderRadius: 70}} />
+    <img style={{width: 56, height: 56, left: 1195, top: 54, position: 'absolute'}} src="https://placehold.co/56x56" />
+    <div style={{left: 669, top: 1290, position: 'absolute', color: 'white', fontSize: 14, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'}}>TÜM HAKLARI SAKLIDIR - 2025</div>
+    <div style={{left: 102, top: 1218, position: 'absolute', color: 'white', fontSize: 20, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'}}>Anasayfa</div>
+    <div style={{left: 102, top: 1248, position: 'absolute', color: 'white', fontSize: 20, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'}}>Hakkımızda</div>
+    <div style={{left: 396, top: 1236, position: 'absolute', color: 'white', fontSize: 20, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'}}>İletişim Bilgileri</div>
+    <div style={{width: 117, height: 39, left: 1139, top: 1260, position: 'absolute', background: 'white'}} />
+    <img style={{width: 104.74, height: 40, left: 1146, top: 1259, position: 'absolute'}} src="https://placehold.co/105x40" />
+    <img style={{width: 376, height: 376, left: 102, top: 455, position: 'absolute'}} src="https://placehold.co/376x376" />
+    <div style={{width: 2, height: 4, left: 1122, top: 1846, position: 'absolute', background: 'black'}} />
+    <div style={{width: 928, left: 867, top: 470, position: 'absolute', color: 'rgba(0, 0, 0, 0.20)', fontSize: 32, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'}}>ÜRÜN AÇIKLAMASI</div>
+    <div style={{width: 162, height: 51, left: 200, top: 1024, position: 'absolute', background: 'black', borderRadius: 70}} />
+    <div style={{width: 189, height: 72, left: 242, top: 1034, position: 'absolute', color: 'white', fontSize: 24, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'}}>Satın Al</div>
+    <div style={{width: 893.91, height: 550.63, left: 523, top: 526, position: 'absolute', background: '#EBEAEA'}} />
+    <div style={{width: 785, left: 599, top: 571, position: 'absolute'}}><span style="color: 'black', fontSize: 20, fontFamily: 'Afacad', fontWeight: '400', wordWrap: 'break-word'">Markanı dijitalde yansıtacak profesyonel bir web sitesiyle öne çık!
+   Web Tasarım Paketimiz ile işletmenize özel, kullanıcı dostu ve mobil uyumlu bir web sitesi hazırlıyoruz. Hem estetik hem de işlevsel çözümlerle markanızı dijitalde bir adım öne taş ıyoruz.<br/>Paket İçeriği:<br/></span><span style="color: 'black', fontSize: 20, fontFamily: 'Afacad', fontWeight: '400', wordWrap: 'break-word'">Özgün ve modern tasarım<br/>Mobil (responsive) uyumlu arayüz<br/>Hızlı ve SEO uyumlu sayfalar<br/>Ana sayfa + Hakkımızda + Hizmetler + İletişim gibi temel sayfalar<br/>İletişim/teklif formu entegrasyonu<br/>Sosyal medya bağlantıları<br/>Temel güvenlik önlemleri<br/>Yayına alma ve destek süreci<br/></span><span style="color: 'black', fontSize: 20, fontFamily: 'Afacad', fontWeight: '400', wordWrap: 'break-word'">Kimler için uygun?
+   Yeni girişimciler, küçük işletmeler, kişisel portfolyo sahibi olmak isteyenler ve dijitalde güçlü bir başlangıç yapmak isteyen herkes için idealdir.<br/>Not: Pakete ek olarak; e-ticaret, çok dilli yapı, blog sistemi gibi modüllerle web sitenizi büyütebilirsiniz.</span></div>
+    <div style={{width: 42, height: 40, left: 26, top: 449, position: 'absolute', background: 'black'}} />
+    <div style={{width: 36, height: 41, left: 1295, top: 62, position: 'absolute', background: 'black'}} />
+    <div style={{width: 33, height: 30.03, left: 172, top: 97, position: 'absolute', background: '#014A8B'}} />
+    <div style={{width: 25, height: 21.88, left: 383, top: 865, position: 'absolute', background: '#FF0000'}} />
+    <div style={{left: 103, top: 862, position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'Jacques Francois', fontWeight: '400', wordWrap: 'break-word'}}>Web Tasarımı Paketi</div>
+    <div style={{left: 102, top: 906, position: 'absolute', color: 'black', fontSize: 24, fontFamily: 'ABeeZee', fontWeight: '400', wordWrap: 'break-word'}}>850,95 TL</div>
+    <img style={{width: 42, height: 31, left: 418, top: 863, position: 'absolute'}} src="https://placehold.co/42x31" />
+    <div style={{width: 43, height: 38, left: 417, top: 859, position: 'absolute', borderRadius: 9999, border: '1px black solid'}} />
+</div>

@@ -1,0 +1,59 @@
+// POPÜLER ÜRÜNLER
+color: 'white', fontSize: 24, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+// YAZILIM ÇÖZÜMLERİ
+color: 'white', fontSize: 24, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+// Hesabım
+color: 'black', fontSize: 16, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+// Sepetim
+color: 'black', fontSize: 16, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+// TEKNİK DESTEK
+color: 'white', fontSize: 24, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+// BİLGİSAYAR DONANIMI
+color: 'white', fontSize: 24, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+//  
+color: 'white', fontSize: 24, fontFamily: 'Inter', fontWeight: '400', wordWrap: 'break-word'
+---
+// TÜM HAKLARI SAKLIDIR - 2025
+color: 'white', fontSize: 14, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+// Anasayfa
+color: 'white', fontSize: 20, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+// Hakkımızda
+color: 'white', fontSize: 20, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+// İletişim Bilgileri
+color: 'white', fontSize: 20, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+// Web Tasarımı Paketi
+color: 'black', fontSize: 36, fontFamily: 'Jacques Francois', fontWeight: '400', wordWrap: 'break-word'
+---
+// Laptop Tamiri
+color: 'black', fontSize: 36, fontFamily: 'Jacques Francois', fontWeight: '400', wordWrap: 'break-word'
+---
+// Mobil Uygulama Arayüz Yapımı
+color: 'black', fontSize: 32, fontFamily: 'Jacques Francois', fontWeight: '400', wordWrap: 'break-word'
+---
+// Satın Al
+color: 'white', fontSize: 24, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+// Alışverişe devam et
+color: 'white', fontSize: 24, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
+---
+// 850,95 TL
+color: 'black', fontSize: 24, fontFamily: 'ABeeZee', fontWeight: '400', wordWrap: 'break-word'
+---
+// 850,95 TL
+color: 'black', fontSize: 24, fontFamily: 'ABeeZee', fontWeight: '400', wordWrap: 'break-word'
+---
+// 850,95 TL
+color: 'black', fontSize: 24, fontFamily: 'ABeeZee', fontWeight: '400', wordWrap: 'break-word'
+---
+// Sepetim
+color: 'black', fontSize: 64, fontFamily: 'Myriad Pro', fontWeight: '400', wordWrap: 'break-word'
