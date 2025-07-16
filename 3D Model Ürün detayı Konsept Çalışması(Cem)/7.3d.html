@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mobil Uygulama Arayüz Tasarımı</title>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 30px auto;
+      display: flex;
+      gap: 40px;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+    model-viewer {
+      width: 100%;
+      max-width: 500px;
+      height: 500px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+    }
+    .details {
+      flex: 1;
+    }
+    .details h1 {
+      margin-top: 0;
+    }
+    .price {
+      font-size: 24px;
+      color: #00ADF0;
+      margin: 10px 0;
+    }
+    .category {
+      font-style: italic;
+      color: #666;
+      margin-bottom: 20px;
+    }
+    .add-to-cart {
+      background: #00ADF0;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    .add-to-cart:hover {
+      background: #00ADF0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <model-viewer 
+    src="scene.gltf"
+    alt="Akıllı Telefon 3D"
+    camera-controls
+    auto-rotate
+    background-color="#ffffff"
+    shadow-intensity="1">
+  </model-viewer>
+
+  <div class="details">
+    <h1>Mobil Uygulama Arayüz Tasarımı </h1>
+    <div class="price">899 TL</div>
+    <div class="category">Kategori: Arayüz / Mobil Uygulama</div>
+    <p>Mobil uygulama arayüz tasarımı sayesinde uygulamalarınız, en iyi ve optimize arayüzlerde çalışır.
+    <strong>Mobil uygulamanın görünümünü 3 boyutlu olarak üründe nasıl gözüktüğünü her açıdan inceleyebilirsiniz.</strong></p>
+    <button class="add-to-cart">Sepete Ekle</button>
+  </div>
+</div>
+
+</body>
+</html>

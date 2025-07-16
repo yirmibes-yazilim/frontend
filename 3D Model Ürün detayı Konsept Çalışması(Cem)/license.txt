@@ -1,0 +1,8 @@
+Model Information:
+* title:	Smartphone
+* source:	https://sketchfab.com/3d-models/smartphone-58344807dfc54a2f807e6af4ddd5af38
+* author:	assetfactory (https://sketchfab.com/assetfactory)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works
