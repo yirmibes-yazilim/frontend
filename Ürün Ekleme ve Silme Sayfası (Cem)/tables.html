@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ürün Ekleme ve Silme</title>
+  <style>
+    body {
+      background-color: #f4f4f4;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      height: 100vh;
+      padding-top: 50px;
+      margin: 0;
+    }
+
+    table {
+      width: 650px;
+      border-collapse: collapse;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      background-color: #ffffff;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    th {
+      background-color: #4CAF50;
+      color: white;
+      padding: 16px;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    td {
+      padding: 14px;
+      text-align: center;
+      border-top: 1px solid #ddd;
+      font-size: 16px;
+    }
+
+    tr:hover td {
+      background-color: #f1f1f1;
+    }
+
+    .form-container {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    input[type="text"], input[type="number"], select {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      width: 180px;
+    }
+
+    button {
+      padding: 10px 16px;
+      font-size: 16px;
+      border: none;
+      background-color: #4CAF50;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .sil-btn {
+      background-color: #e74c3c;
+    }
+
+    .sil-btn:hover {
+      background-color: #c0392b;
+    }
+  </style>
+</head>
+<body>
+
+  <table id="urunTablosu">
+    <tr>
+      <th>Ürün Adı</th>
+      <th>Fiyat (₺)</th>
+      <th>Kategori</th>
+      <th>İşlem</th>
+    </tr>
+    <tr>
+      <td>Web Tasarım Paketi</td>
+      <td>1500</td>
+      <td>Hizmet</td>
+      <td><button class="sil-btn" onclick="satirSil(this)">Sil</button></td>
+    </tr>
+    <tr>
+      <td>Laptop Tamiri</td>
+      <td>800</td>
+      <td>Teknik</td>
+      <td><button class="sil-btn" onclick="satirSil(this)">Sil</button></td>
+    </tr>
+  </table>
+
+  <div class="form-container">
+    <input type="text" id="urunAdi" placeholder="Ürün Adı" />
+    <input type="number" id="urunFiyat" placeholder="Fiyat (₺)" />
+    <select id="urunKategori">
+      <option value="">Kategori Seçin</option>
+      <option value="Hizmet">Hizmet</option>
+      <option value="Teknik">Teknik</option>
+      <option value="Donanım">Donanım</option>
+      <option value="Yazılım">Yazılım</option>
+    </select>
+    <button onclick="urunEkle()">Ekle</button>
+  </div>
+
+  <script>
+    function urunEkle() {
+      const ad = document.getElementById('urunAdi').value.trim();
+      const fiyat = document.getElementById('urunFiyat').value.trim();
+      const kategori = document.getElementById('urunKategori').value;
+
+      if (ad === "" || fiyat === "" || kategori === "") {
+        alert("Lütfen tüm alanları doldurunuz.");
+        return;
+      }
+
+      const tablo = document.getElementById('urunTablosu');
+      const yeniSatir = tablo.insertRow();
+      yeniSatir.innerHTML = `
+        <td>${ad}</td>
+        <td>${fiyat}</td>
+        <td>${kategori}</td>
+        <td><button class="sil-btn" onclick="satirSil(this)">Sil</button></td>
+      `;
+
+      // Alanları temizle
+      document.getElementById('urunAdi').value = "";
+      document.getElementById('urunFiyat').value = "";
+      document.getElementById('urunKategori').value = "";
+    }
+
+    function satirSil(btn) {
+      const satir = btn.parentNode.parentNode;
+      satir.remove();
+    }
+  </script>
+
+</body>
+</html>
