@@ -23,10 +23,13 @@ const Login = () => {
         }),
       });
 
-      const result = await response.json();     //gelen yanıtı JSON formatında alır
+      const result = await response.json(); //gelen yanıtı JSON formatında alır
+      console.log("Gelen API Yanıtı:", result);
 
       if (result.isSuccessful) {
-        alert(result.message);      //kullanıcıya “Giriş Başarılı” mesajı gösterilir
+        alert(result.message); //kullanıcıya “Giriş Başarılı” mesajı gösterilir
+         localStorage.setItem("token", result.token);
+         localStorage.setItem("userId", result.userId.toString());     
 
         navigate("/"); // Giriş başarılıysa anasayfaya yönlendir
       } else {
