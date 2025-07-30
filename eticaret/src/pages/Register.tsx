@@ -1,44 +1,43 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { registerUser } from "../services/authService";
 
-const Register = () => {
-  const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
-
+  const Register = () => {
   const navigate = useNavigate();
 
-  const handleRegister = async (e: React.FormEvent) => {
+  const [form, setForm] = useState({
+    username: "",
+    email: "",
+    firstName: "",
+    lastName: "",
+    password: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setError("");
 
     try {
-      const response = await fetch("http://192.168.25.122:5102/api/Auth/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email,
-          username,
-          firstName,
-          lastName,
-          password,
-        }),
-      });
-
-      const result = await response.json();
+      const result = await registerUser(form);
 
       if (result.isSuccessful) {
-        alert(result.message || "Kayıt başarılı!");
-        navigate("/login");
-      } else {
-        alert(result.message || "Kayıt başarısız");
-      }
-    } catch (error) {
-      console.error("Kayıt hatası:", error);
-      alert("Bir hata oluştu. Lütfen tekrar deneyin.");
+      const userId = result.data?.id;     // backend bu bilgiyi dönmeli
+      alert("Lütfen e-posta adresinize gelen kodu doğrulayın.");
+      navigate(`/send-confirmation/${userId}`);
+    } else {
+      setError(result.message || "Kayıt başarısız.");
+    }
+    } catch (err) {
+      setError("Sunucuyla bağlantı kurulamadı.");
+      console.error("Register error:", err);
     } finally {
       setLoading(false);
     }
@@ -47,7 +46,7 @@ const Register = () => {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 px-4">
       <form
-        onSubmit={handleRegister}
+        onSubmit={handleSubmit}
         className="bg-white p-8 rounded-2xl shadow-md w-full max-w-md relative"
       >
         <button
@@ -60,20 +59,24 @@ const Register = () => {
         </button>
         <h2 className="text-2xl font-bold mb-6 text-center">Kayıt Ol</h2>
 
+        {error && <p className="text-red-600 text-sm mb-4">{error}</p>}
+
         <div className="grid grid-cols-2 gap-4 mb-4">
           <input
             type="text"
+            name="firstName"
             placeholder="Ad"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
+            value={form.firstName}
+            onChange={handleChange}
             required
             className="border p-2 rounded-md"
           />
           <input
             type="text"
+            name="lastName"
             placeholder="Soyad"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
+            value={form.lastName}
+            onChange={handleChange}
             required
             className="border p-2 rounded-md"
           />
@@ -81,27 +84,30 @@ const Register = () => {
 
         <input
           type="text"
+          name="username"
           placeholder="Kullanıcı Adı"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          value={form.username}
+          onChange={handleChange}
           required
           className="w-full mb-4 border p-2 rounded-md"
         />
 
         <input
           type="email"
+          name="email"
           placeholder="E-posta"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={form.email}
+          onChange={handleChange}
           required
           className="w-full mb-4 border p-2 rounded-md"
         />
 
         <input
           type="password"
+          name="password"
           placeholder="Şifre"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={form.password}
+          onChange={handleChange}
           required
           className="w-full mb-6 border p-2 rounded-md"
         />

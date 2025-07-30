@@ -1,44 +1,47 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";     //yönlendirme yapar
 
+import axiosInstance from"../api/axiosInstance";
+
+
+
 const Login = () => {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("");              //Form verilerini ve olası hata mesajlarını tutan state’ler
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  //const { login } = useAuth();
 
   const handleLogin = async (e: React.FormEvent) => {     //form gönderildiğinde çalışır (React'e, bu e parametresinin bir "form olayı" olduğunu söyler.)
     e.preventDefault();                             // Tarayıcının formu otomatik göndermesini (ve sayfayı yenilemesini) durdurur
     setLoading(true);
+    setError("");                                   //önceki hatayı temizler
 
-    try {       //hata oluşursa programın çökmesini önler
-      const response = await fetch("http://192.168.25.122:5102/api/Auth/login", {      //fetch: Tarayıcıda HTTP isteği atmamızı sağlar, await: istek tamamlanana kadar bekler
-        method: "POST",     //API'ye veri gönderiyoruz
-        headers: {          // Gönderdiğimiz verinin türünü
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({      //gönderilen veriler JSON.stringify ile strine çevrilir
-          email,
-          password,
-        }),
-      });
 
-      const result = await response.json();     //gelen yanıtı JSON formatında alır
+    try {
+    const response = await axiosInstance.post("/Auth/login", {
+        email,
+        password,
+    });
 
-      if (result.isSuccessful) {
-        alert(result.message);      //kullanıcıya “Giriş Başarılı” mesajı gösterilir
+    const result = response.data;
 
-        navigate("/"); // Giriş başarılıysa anasayfaya yönlendir
+    if (result.isSuccessful) {
+        //login(result.data); // <-- context login işlemi
+        alert("Giriş başarılı!");
+        navigate("/");
       } else {
-        alert(result.message || "Giriş başarısız");
+        setError(result.message || "Giriş başarısız!");
       }
-    } catch (error) {       // fetch sırasında bir hata oluşursa
-      console.error("Login hatası:", error);
-      alert("Bir hata oluştu. Lütfen tekrar deneyin.");
+    } catch (err) {
+      console.error("Login error:", err);
+      setError("Sunucuyla bağlantı kurulamadı.");
     } finally {
-      setLoading(false);        //loading durumunu sıfırlar, buton tekrar aktif hale gelir
+      setLoading(false); //loading durumunu sıfırlar, buton tekrar aktif hale gelir
     }
-  };
+   
+};
 
  
 
@@ -57,6 +60,12 @@ const Login = () => {
           &times;
         </button>
         <h2 className="text-2xl font-bold mb-6 text-center">Giriş Yap</h2>
+
+        {error && (
+          <div className="mb-4 text-red-600 text-sm text-center font-medium">
+            {error}
+          </div>
+        )}
 
         <div className="mb-4">
           <label htmlFor="email" className="block text-sm mb-1 font-medium">
