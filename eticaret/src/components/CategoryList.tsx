@@ -1,6 +1,6 @@
 async function getAllCategories() {
   try {
-    const response = await fetch('http://192.168.25.122:5102/api/Categories/getAll');
+    const response = await fetch('http://192.168.25.123:5102/api/Categories/getAll');
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }

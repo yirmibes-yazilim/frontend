@@ -50,7 +50,7 @@ const EditAddress: React.FC<EditAddressProps> = ({
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
 
-  const API_BASE_URL = "http://192.168.25.122:5102/api";
+  const API_BASE_URL = "http://192.168.25.123:5102/api";
 
   // Adresi getir
   const fetchAddress = async (): Promise<void> => {

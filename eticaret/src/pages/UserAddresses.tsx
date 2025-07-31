@@ -6,6 +6,7 @@ const UserAddresses = () => {
 
   useEffect(() => {
     const fetchAddresses = async () => {
+      const userId = parseInt(localStorage.getItem("userId") || "0", 10);
       const result = await getAddressesByUserId(10); // 10 yerine kullanıcı ID'sini dinamik ver
       if (result.isSuccessful) {
         setAddresses(result.data);

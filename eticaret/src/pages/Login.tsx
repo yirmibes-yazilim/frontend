@@ -12,7 +12,7 @@ const Login = () => {
     setLoading(true);
 
     try {       //hata oluşursa programın çökmesini önler
-      const response = await fetch("http://192.168.25.122:5102/api/Auth/login", {      //fetch: Tarayıcıda HTTP isteği atmamızı sağlar, await: istek tamamlanana kadar bekler
+      const response = await fetch("http://192.168.25.123:5102/api/Auth/login", {      //fetch: Tarayıcıda HTTP isteği atmamızı sağlar, await: istek tamamlanana kadar bekler
         method: "POST",     //API'ye veri gönderiyoruz
         headers: {          // Gönderdiğimiz verinin türünü
           "Content-Type": "application/json",
@@ -27,9 +27,11 @@ const Login = () => {
       console.log("Gelen API Yanıtı:", result);
 
       if (result.isSuccessful) {
+        console.log ("Giriş başarılı:", result);
+        console.log("Kullanıcı bilgisi:",);
         alert(result.message); //kullanıcıya “Giriş Başarılı” mesajı gösterilir
          localStorage.setItem("token", result.token);
-         localStorage.setItem("userId", result.userId.toString());     
+         localStorage.setItem("userId", result.data.userInfo.id.toString());     
 
         navigate("/"); // Giriş başarılıysa anasayfaya yönlendir
       } else {
@@ -41,6 +43,13 @@ const Login = () => {
     } finally {
       setLoading(false);        //loading durumunu sıfırlar, buton tekrar aktif hale gelir
     }
+      const token =localStorage.getItem("token");
+        fetch("http://localhost:5173/api/addresses",{
+          headers: {
+            Authorization : `Bearer ${token}`, // token'ı Authorization başlığına ekler
+          },
+        });   
+      
   };
 
  

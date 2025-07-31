@@ -31,7 +31,11 @@ export function App() {
       <div className="container mx-auto p-4">
         <Header/>
         <Nav/>
+        
         <Routes>
+          
+        
+
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/favorites" element={<Favorites/>}/>

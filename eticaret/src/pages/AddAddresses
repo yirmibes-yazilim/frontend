@@ -17,7 +17,7 @@ const AddAddress = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://192.168.25.122:5102/api/Addresses/create", {
+      const res = await fetch("http://192.168.25.123:5102/api/Addresses/create", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form)
