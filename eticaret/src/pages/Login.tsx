@@ -27,9 +27,8 @@ const Login = () => {
       console.log("Gelen API Yanıtı:", result);
 
       if (result.isSuccessful) {
-        console.log ("Giriş başarılı:", result);
-        console.log("Kullanıcı bilgisi:",);
-        alert(result.message); //kullanıcıya “Giriş Başarılı” mesajı gösterilir
+        console.log ("Giriş başarılı:", result);//kullanıcıya “Giriş Başarılı” mesajı gösterilir
+        alert(result.message); 
          localStorage.setItem("token", result.token);
          localStorage.setItem("userId", result.data.userInfo.id.toString());     
 
