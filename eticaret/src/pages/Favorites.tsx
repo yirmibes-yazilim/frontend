@@ -22,10 +22,38 @@ const Favorites = () => {
                 <div className="text-2xl font-bold mb-6 text-center">Favorilerim</div>
 
                 <div className="grid grid-cols-3 gap-10 mb-8 mx-8">
-                    <ProductItem/>
-                    <ProductItem/>
-                    <ProductItem/>
-                    <ProductItem/>
+                    <ProductItem product={{
+                        id: 0,
+                        name: "",
+                        description: "",
+                        price: 0,
+                        stock: 0,
+                        imageUrl: ""
+                    }}/>
+                    <ProductItem product={{
+                        id: 0,
+                        name: "",
+                        description: "",
+                        price: 0,
+                        stock: 0,
+                        imageUrl: ""
+                    }}/>
+                    <ProductItem product={{
+                        id: 0,
+                        name: "",
+                        description: "",
+                        price: 0,
+                        stock: 0,
+                        imageUrl: ""
+                    }}/>
+                    <ProductItem product={{
+                        id: 0,
+                        name: "",
+                        description: "",
+                        price: 0,
+                        stock: 0,
+                        imageUrl: ""
+                    }}/>
                 </div>
 
             </form>

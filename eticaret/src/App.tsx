@@ -14,7 +14,8 @@ import AdminProductsPage from './pages/AdminProductsPage';
 import AdminLayout from './components/AdminLayout';
 import AdminCategoriesPage from './pages/AdminCategoriesPage';
 import Footer from './components/Footer';
-
+import CartInterface from './pages/CartPage';
+import AdminConfig from './pages/AdminConfiguraiton';
 
 
 
@@ -39,7 +40,7 @@ function App() {
           <Route path="/favorites" element={<Favorites/>}/>
           <Route path="/send-confirmation/:userId" element={<EmailConfirmationSend />} />
           <Route path="/verify-email" element={<EmailVerify />} />
-          
+          <Route path="/cartpage" element={<CartInterface />}/>          
 
           <Route path="/admin/login" element={<AdminLogin/>}/>
 
@@ -47,6 +48,7 @@ function App() {
             <Route path="home" element={<AdminHome />} />
             <Route path="adminproducts" element={<AdminProductsPage />} />
             <Route path="admincategories" element={<AdminCategoriesPage/>} />
+            <Route path="configuration" element={<AdminConfig/>} />
           
           </Route>
           

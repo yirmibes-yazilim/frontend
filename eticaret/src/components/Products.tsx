@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import instance from "../api/axiosInstance"; 
 import ProductItem from "./ProductItem";
+import { DEFAULT_COLS } from "../components/ColumnCounter"; // ortak sabiti içe aktarır
+import clsx from "clsx"; //değiştirilebilir css için clsx import edildi
 
 interface Product {
   id: number;
@@ -11,8 +13,19 @@ interface Product {
   imageUrl: string;
 }
 
-const Products = () => {
+type ColCount = 1|2|3|4|5|6|7|8|9|10|11|12; 
+
+const COL_MAP: Record<ColCount, string> = { //Sütun sayı değerlerinin hangi grid-cols a denk geldiği belirlenir
+  1:"grid-cols-1", 2:"grid-cols-2", 3:"grid-cols-3", 4:"grid-cols-4",
+  5:"grid-cols-5", 6:"grid-cols-6", 7:"grid-cols-7", 8:"grid-cols-8",
+  9:"grid-cols-9", 10:"grid-cols-10", 11:"grid-cols-11", 12:"grid-cols-12",
+};
+
+const COLS_KEY = "global_cols";
+
+export const Products = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [cols, setCols] = useState<ColCount>(4);
 
   useEffect(() => {
     instance.get("/Products/list")
@@ -28,8 +41,24 @@ const Products = () => {
       });
   }, []);
 
+  useEffect(() => {
+    const saved = localStorage.getItem(COLS_KEY);
+    const val = saved ? Number(saved) : DEFAULT_COLS;
+    setCols((Math.min(12, Math.max(1, val))) as ColCount);
+  }, []);
+
+    useEffect(() => {
+    const handleStorage = () => {
+      const saved = localStorage.getItem(COLS_KEY);
+      const val = saved ? Number(saved) : DEFAULT_COLS;
+      setCols((Math.min(12, Math.max(1, val))) as ColCount);
+    };
+    window.addEventListener("storage", handleStorage);
+    return () => window.removeEventListener("storage", handleStorage);
+  }, []);
+
   return (
-    <div className="grid grid-cols-4 gap-10 mb-8 mx-8">
+    <div className={clsx("grid gap-10 mb-8 mx-8", COL_MAP[cols])}>
       {products.map((product) => (
         <ProductItem key={product.id} product={product} />
       ))}
