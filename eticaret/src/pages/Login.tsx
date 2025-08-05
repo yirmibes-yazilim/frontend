@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";     //yönlendirme yapar
-
 import axiosInstance from"../api/axiosInstance";
-
-
+import Cookies from "js-cookie";
+import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
   const [email, setEmail] = useState("");              //Form verilerini ve olası hata mesajlarını tutan state’ler
@@ -11,7 +10,7 @@ const Login = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  //const { login } = useAuth();
+  const { login } = useAuth();
 
   const handleLogin = async (e: React.FormEvent) => {     //form gönderildiğinde çalışır (React'e, bu e parametresinin bir "form olayı" olduğunu söyler.)
     e.preventDefault();                             // Tarayıcının formu otomatik göndermesini (ve sayfayı yenilemesini) durdurur
@@ -28,9 +27,14 @@ const Login = () => {
     const result = response.data;
 
     if (result.isSuccessful) {
-        //login(result.data); // <-- context login işlemi
-        alert("Giriş başarılı!");
-        navigate("/");
+      // Backend'den gelen accessToken ve refreshToken isimlerine dikkat et!
+      const accessToken = result.data.accessToken;
+      const refreshToken = result.data.refreshToken;
+      login(accessToken); // Context ve localStorage ile uyumlu
+      Cookies.set("accessToken", result.data.accessToken);   // Cookie'ye ekle
+      Cookies.set("refreshToken", result.data.refreshToken); // Cookie'ye ekle
+      alert("Giriş başarılı!");
+      navigate("/");
       } else {
         setError(result.message || "Giriş başarısız!");
       }

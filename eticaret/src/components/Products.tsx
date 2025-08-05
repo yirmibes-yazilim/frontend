@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import instance from "../api/axiosInstance"; 
 import ProductItem from "./ProductItem";
+import { addFavorite, removeFavorite, getFavorites } from "../api/favoriteService";
 import { DEFAULT_COLS } from "../components/ColumnCounter"; // ortak sabiti içe aktarır
 import clsx from "clsx"; //değiştirilebilir css için clsx import edildi
 
@@ -25,6 +26,7 @@ const COLS_KEY = "global_cols";
 
 export const Products = () => {
   const [products, setProducts] = useState<Product[]>([]);
+  const [favoriteIds, setFavoriteIds] = useState<number[]>([]);
   const [cols, setCols] = useState<ColCount>(4);
 
   useEffect(() => {
@@ -39,6 +41,19 @@ export const Products = () => {
       .catch((error) => {
         console.error("Hata:", error);
       });
+  }, []);
+
+    // Favori ürünleri çek
+  useEffect(() => {
+    getFavorites()
+      .then((response) => {
+        if (response.data.isSuccessful) {
+          // Eğer response.data.data productId dizisiyse:
+          setFavoriteIds(response.data.data.map((item: any) => item.productId ?? item.id));
+          // productId yoksa doğrudan id’yi alabilirsin
+        }
+      })
+      .catch(() => setFavoriteIds([]));
   }, []);
 
   useEffect(() => {
@@ -56,11 +71,28 @@ export const Products = () => {
     window.addEventListener("storage", handleStorage);
     return () => window.removeEventListener("storage", handleStorage);
   }, []);
+    // Favori toggle fonksiyonu
+  const handleToggleFavorite = (id: number, isFav: boolean) => {
+    if (isFav) {
+      removeFavorite(id).then(() => {
+        setFavoriteIds((prev) => prev.filter(fid => fid !== id));
+      });
+    } else {
+      addFavorite(id).then(() => {
+        setFavoriteIds((prev) => [...prev, id]);
+      });
+    }
+  };
 
   return (
     <div className={clsx("grid gap-10 mb-8 mx-8", COL_MAP[cols])}>
       {products.map((product) => (
-        <ProductItem key={product.id} product={product} />
+        <ProductItem
+          key={product.id}
+          product={product}
+          isFavorited={favoriteIds.includes(product.id)}
+          onToggleFavorite={handleToggleFavorite}
+        />
       ))}
     </div>
   );
