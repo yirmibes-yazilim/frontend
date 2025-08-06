@@ -3,7 +3,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 const instance = axios.create({
-  baseURL: "http://192.168.25.123:5102/api",
+  baseURL: "http://192.168.25.136:5102/api",
   headers: {
     "Content-Type": "application/json",
   },
@@ -51,7 +51,7 @@ instance.interceptors.response.use(
       const refreshToken = Cookies.get("refreshToken");
 
       try {
-        const res = await axios.post("http://192.168.25.123:5102/api/Auth/refresh-token", {
+        const res = await axios.post("http://192.168.25.136:5102/api/Auth/refresh-token", {
           refreshToken: refreshToken,
         });
 
