@@ -31,8 +31,8 @@ const Login = () => {
       const accessToken = result.data.accessToken;
       const refreshToken = result.data.refreshToken;
       login(accessToken); // Context ve localStorage ile uyumlu
-      Cookies.set("accessToken", result.data.accessToken);   // Cookie'ye ekle
-      Cookies.set("refreshToken", result.data.refreshToken); // Cookie'ye ekle
+      Cookies.set("accessToken", result.data.accessToken.accessToken);   // Cookie'ye ekle
+      Cookies.set("refreshToken", result.data.refreshToken.refreshToken); // Cookie'ye ekle
       alert("Giriş başarılı!");
       navigate("/");
       } else {
