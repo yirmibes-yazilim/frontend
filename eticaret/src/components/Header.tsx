@@ -64,10 +64,10 @@ const Header = () => {
             <div className="absolute right-0 bg-white shadow-lg rounded-lg mt-2 w-48 z-50">
               <ul className="py-2">
                 <li
-                  onClick={() => navigate("/profile")}
+                  onClick={() => navigate("/login")}
                   className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
                 >
-                  Profil
+                  Login
                 </li>
                 <li
                   onClick={() => navigate("/cartpage")}

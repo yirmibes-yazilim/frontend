@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowLeft, Save, MapPin } from 'lucide-react';
 import axiosInstance from '../api/axiosInstance';
+import { useParams } from 'react-router-dom';
 
 
 interface Address {
   id: number;
-  userId?: number;
   addressLine1: string;
   addressLine2: string;
   city: string;
@@ -22,28 +22,18 @@ interface ApiResponse {
   message: string;
 }
 
-interface EditAddressProps {
-  addressId?:number;
-  userId?:number;
-  onBack?: () => void;
-  onSave?: (address: Address) => void;
-}
+const EditAddress: React.FC = () => {
+  const { id } = useParams();
+  const addressId = Number(id);
 
-const EditAddress: React.FC<EditAddressProps> = ({ 
-  addressId = 2,
-  userId = 10, 
-  onBack,
-  onSave 
-}) => {
   const [address, setAddress] = useState<Address>({
-    id: 0,
-    userId: userId,
+    id: addressId,
     addressLine1: '',
     addressLine2: '',
     city: '',
     postalCode: '',
     country: '',
-    isDefault: false
+    isDefault: false,
   });
 
   const [loading, setLoading] = useState<boolean>(false);
@@ -53,7 +43,7 @@ const EditAddress: React.FC<EditAddressProps> = ({
 
 
   // Adresi getir
-  const fetchAddress = async (): Promise<void> => {
+  const fetchAddress = async () => {
     setLoading(true);
     setError(null);
     
@@ -75,30 +65,22 @@ const EditAddress: React.FC<EditAddressProps> = ({
   };
 
   // Adresi güncelle
-  const updateAddress = async (): Promise<void> => {
+  const updateAddress = async () => {
     setSaving(true);
     setError(null);
     setSuccess(null);
-
-    
     try {
       const response = await axiosInstance.put<ApiResponse>(`/Addresses/update`, {
         id: address.id,
-        userId: address.userId,
         addressLine1: address.addressLine1,
         addressLine2: address.addressLine2,
         city: address.city,
         postalCode: address.postalCode,
         country: address.country,
       });
-
       const result = response.data;
-
       if (result.isSuccessful) {
         setSuccess(result.message || 'Adres başarıyla güncellendi!');
-        if (onSave) {
-          onSave(address);
-        }
       } else {
         setError(result.error || 'Güncelleme başarısız');
       }
@@ -136,13 +118,8 @@ const EditAddress: React.FC<EditAddressProps> = ({
   };
 
   // Geri dön
-  const handleBack = (): void => {
-    if (onBack) {
-      onBack();
-    } else {
-      // Varsayılan geri dönme işlemi
-      window.history.back();
-    }
+  const handleBack = () => {
+    window.history.back();
   };
 
   if (loading) {
@@ -159,25 +136,28 @@ const EditAddress: React.FC<EditAddressProps> = ({
   return (
     <div className="max-w-2xl mx-auto p-6">
       {/* Header */}
-      <div className="flex items-center mb-6">
-        <button
-          onClick={handleBack}
-          className="flex items-center text-gray-600 hover:text-gray-800 transition-colors mr-4"
-        >
-          <ArrowLeft size={20} className="mr-2" />
-          Geri Dön
-        </button>
-        <div className="flex items-center">
-          <MapPin className="text-orange-500 mr-2" size={24} />
-          <h1 className="text-2xl font-bold text-gray-800">Adres Düzenle</h1>
-        </div>
-      </div>
+<div className="mb-6">
+  <div className="flex items-center justify-between">
+    <button
+      onClick={handleBack}
+      className="flex items-center text-gray-600 hover:text-gray-800 transition-colors"
+    >
+      <ArrowLeft size={20} className="mr-2" />
+      Geri Dön
+    </button>
+  </div>
+
+  <div className="mt-4 flex items-center">
+    <MapPin className="text-green-700 mr-2" size={24} />
+    <h1 className="text-2xl font-bold text-gray-800">Adres Düzenle</h1>
+  </div>
+</div>
 
       {/* Mesajlar */}
       {error && (
         <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-6">
           {error}
-        </div>
+        </div>  
       )}
 
       {success && (
@@ -282,7 +262,7 @@ const EditAddress: React.FC<EditAddressProps> = ({
             className={`flex items-center justify-center px-6 py-3 rounded-lg font-semibold transition-colors ${
               saving
                 ? 'bg-gray-400 cursor-not-allowed'
-                : 'bg-orange-500 hover:bg-orange-600 text-white'
+                : 'bg-green-700 hover:bg-green-800 text-white'
             }`}
           >
             {saving ? (

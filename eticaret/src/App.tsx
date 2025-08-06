@@ -15,6 +15,9 @@ import AdminCategoriesPage from "./pages/AdminCategoriesPage";
 import Footer from "./components/Footer";
 import CartInterface from "./pages/CartPage";
 import AdminConfig from "./pages/AdminConfiguraiton";
+import UserAddresses from "./pages/UserAddress";
+import AddAddress from "./pages/AddAddresses";
+import EditAddress from "./pages/EditAddress";
 
 function App() {
   const location = useLocation();
@@ -38,6 +41,10 @@ function App() {
           <Route path="/verify-email" element={<EmailVerify />} />
           <Route path="/cartpage" element={<CartInterface />} />
           <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/addresses" element={<UserAddresses />} />
+          <Route path="/addressadd" element={<AddAddress />} />
+          <Route path="/addressedit/:id" element={<EditAddress />} />
+
 
           <Route path="/admin" element={<AdminLayout />}>
             <Route path="home" element={<AdminHome />} />
