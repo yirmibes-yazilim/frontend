@@ -1,8 +1,17 @@
 import React, { useState } from 'react';
 
-const AddAddress = () => {
-  const [form, setForm] = useState({
-    userId: 10, // giriş yapan kullanıcı ID'si
+interface AddressForm {
+  userId: number;
+  addressLine1: string;
+  addressLine2: string;
+  city: string;
+  postalCode: string;
+  country: string;
+}
+
+const AddAddress: React.FC = () => {
+  const [form, setForm] = useState<AddressForm>({
+    userId: 8,
     addressLine1: '',
     addressLine2: '',
     city: '',
@@ -10,14 +19,15 @@ const AddAddress = () => {
     country: ''
   });
 
-  const handleChange = (e) => {
-    setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setForm(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const res = await fetch("http://192.168.25.123:5102/api/Addresses/create", {
+      const res = await fetch("http://192.168.25.136:5102/api/Addresses/create", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form)
@@ -34,12 +44,12 @@ const AddAddress = () => {
 
   return (
     <form onSubmit={handleSubmit} className="p-4 max-w-md">
-      {["addressLine1", "addressLine2", "city", "postalCode", "country"].map(field => (
+      {["addressLine1", "addressLine2", "city", "postalCode", "country"].map((field) => (
         <input
           key={field}
           type="text"
           name={field}
-          value={field}
+          value={form[field as keyof AddressForm]}
           onChange={handleChange}
           placeholder={field}
           className="block w-full mb-2 border p-2 rounded"
@@ -51,3 +61,4 @@ const AddAddress = () => {
 };
 
 export default AddAddress;
+

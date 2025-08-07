@@ -30,7 +30,7 @@ interface EditAddressProps {
 
 const EditAddress: React.FC<EditAddressProps> = ({ 
   addressId = 2,
-  userId = 10, 
+  userId = 8, 
   onBack,
   onSave 
 }) => {
@@ -50,7 +50,7 @@ const EditAddress: React.FC<EditAddressProps> = ({
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
 
-  const API_BASE_URL = "http://192.168.25.123:5102/api";
+  const API_BASE_URL = "http://192.168.25.136:5102/api";
 
   // Adresi getir
   const fetchAddress = async (): Promise<void> => {

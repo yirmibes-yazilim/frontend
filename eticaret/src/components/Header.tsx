@@ -1,3 +1,4 @@
+
 import { useNavigate } from "react-router-dom";
 import { FaRegHeart } from "react-icons/fa";
 import { VscAccount } from "react-icons/vsc";
@@ -11,11 +12,16 @@ const Header = () => {
   const [showUserDropdown, setShowUserDropdown] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  
 
-  useEffect(() => {
-    const status = localStorage.getItem("isLoggedIn");
-    setIsLoggedIn(status === "true");
-  }, []);
+
+ useEffect(() => {
+  const token = localStorage.getItem("token");
+  const isLoggedIn = token !== null && token !== "undefined"; // Hem null hem de "undefined" string'ini kontrol edin
+  console.log("Token değeri:", token); // Debug için
+
+  setIsLoggedIn(isLoggedIn);
+}, []);
 
   // Menü dışına tıklanırsa dropdown kapanır
   useEffect(() => {

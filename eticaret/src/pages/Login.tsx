@@ -1,5 +1,6 @@
+import Cookies from "js-cookie";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";     //yönlendirme yapar
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -7,51 +8,50 @@ const Login = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
-  const handleLogin = async (e: React.FormEvent) => {     //form gönderildiğinde çalışır (React'e, bu e parametresinin bir "form olayı" olduğunu söyler.)
-    e.preventDefault();                             // Tarayıcının formu otomatik göndermesini (ve sayfayı yenilemesini) durdurur
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
     setLoading(true);
 
-    try {       //hata oluşursa programın çökmesini önler
-      const response = await fetch("http://192.168.25.123:5102/api/Auth/login", {      //fetch: Tarayıcıda HTTP isteği atmamızı sağlar, await: istek tamamlanana kadar bekler
-        method: "POST",     //API'ye veri gönderiyoruz
-        headers: {          // Gönderdiğimiz verinin türünü
+    try {
+      const response = await fetch("http://192.168.25.136:5102/api/Auth/login", {
+        method: "POST",
+        headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({      //gönderilen veriler JSON.stringify ile strine çevrilir
+        body: JSON.stringify({
           email,
           password,
         }),
       });
 
-      const result = await response.json(); //gelen yanıtı JSON formatında alır
+      const result = await response.json();
+
       console.log("Gelen API Yanıtı:", result);
 
       if (result.isSuccessful) {
-        console.log ("Giriş başarılı:", result);//kullanıcıya “Giriş Başarılı” mesajı gösterilir
-        alert(result.message); 
-         localStorage.setItem("token", result.token);
-         localStorage.setItem("userId", result.data.userInfo.id.toString());     
+        console.log("Giriş başarılı:", result);
+        alert(result.message);
+        Cookies.set("token", result.token);
+        Cookies.set("userId", result.data.userInfo.id.toString());
 
-        navigate("/"); // Giriş başarılıysa anasayfaya yönlendir
+        navigate("/");
       } else {
         alert(result.message || "Giriş başarısız");
       }
-    } catch (error) {       // fetch sırasında bir hata oluşursa
+    } catch (error) {
       console.error("Login hatası:", error);
       alert("Bir hata oluştu. Lütfen tekrar deneyin.");
     } finally {
-      setLoading(false);        //loading durumunu sıfırlar, buton tekrar aktif hale gelir
+      setLoading(false);
     }
-      const token =localStorage.getItem("token");
-        fetch("http://localhost:5173/api/addresses",{
-          headers: {
-            Authorization : `Bearer ${token}`, // token'ı Authorization başlığına ekler
-          },
-        });   
-      
-  };
 
- 
+    const token = Cookies.get("token");
+    fetch("http://localhost:5173/api/addresses", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  };
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 px-4">
@@ -99,7 +99,7 @@ const Login = () => {
 
         <button
           type="submit"
-          disabled={loading}            //buton tıklanamaz hale gelir,aynı anda birden fazla istek atılması engellenir
+          disabled={loading}
           className="w-full bg-blue-500 text-white font-semibold py-2 rounded-md hover:bg-blue-600 transition"
         >
           {loading ? "Giriş Yapılıyor..." : "Giriş Yap"}
