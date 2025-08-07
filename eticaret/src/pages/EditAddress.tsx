@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { ArrowLeft, Save, MapPin } from 'lucide-react';
 import axiosInstance from '../api/axiosInstance';
+import axios from 'axios';
 import { useParams } from 'react-router-dom';
-
 
 interface Address {
   id: number;
@@ -41,28 +41,30 @@ const EditAddress: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
 
-
   // Adresi getir
-  const fetchAddress = async () => {
+  const fetchAddress = useCallback(async () => {
     setLoading(true);
     setError(null);
-    
+
     try {
       const response = await axiosInstance.get<ApiResponse>(`/Addresses/getById/${addressId}`);
       const result = response.data;
-      
+
       if (result.isSuccessful && result.data) {
         setAddress(result.data);
       } else {
         setError(result.error || 'Adres getirilemedi');
       }
-    } catch (err: any) {
-      setError(err.response?.data?.error || 'Bir hata oluştu');
+    } catch (err: unknown) {
+      if (axios.isAxiosError(err) && err.response?.data?.error) {
+        setError(err.response.data.error);
+      } else {
+        setError('Bir hata oluştu');
+      }
     } finally {
       setLoading(false);
     }
-    
-  };
+  }, [addressId]);
 
   // Adresi güncelle
   const updateAddress = async () => {
@@ -84,19 +86,21 @@ const EditAddress: React.FC = () => {
       } else {
         setError(result.error || 'Güncelleme başarısız');
       }
-    } catch (err: any) {
-      setError(err.response?.data?.error || 'Bir hata oluştu');
+    } catch (err: unknown) {
+      if (axios.isAxiosError(err) && err.response?.data?.error) {
+        setError(err.response.data.error);
+      } else {
+        setError('Bir hata oluştu');
+      }
     } finally {
       setSaving(false);
     }
   };
 
-  // Component mount olduğunda adresi getir
   useEffect(() => {
     fetchAddress();
-  }, [addressId]);
+  }, [fetchAddress]);
 
-  // Input değişikliklerini handle et
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     const { name, value } = e.target;
     setAddress(prev => ({
@@ -105,9 +109,7 @@ const EditAddress: React.FC = () => {
     }));
   };
 
-  // Form submit
   const handleSubmit = (): void => {
-    // Basit validasyon
     if (!address.addressLine1.trim() || !address.city.trim() || !address.country.trim()) {
       setError('Lütfen zorunlu alanları doldurun');
       return;
@@ -116,7 +118,6 @@ const EditAddress: React.FC = () => {
     updateAddress();
   };
 
-  // Geri dön
   const handleBack = () => {
     window.history.back();
   };
@@ -135,28 +136,28 @@ const EditAddress: React.FC = () => {
   return (
     <div className="max-w-2xl mx-auto p-6">
       {/* Header */}
-<div className="mb-6">
-  <div className="flex items-center justify-between">
-    <button
-      onClick={handleBack}
-      className="flex items-center text-gray-600 hover:text-gray-800 transition-colors"
-    >
-      <ArrowLeft size={20} className="mr-2" />
-      Geri Dön
-    </button>
-  </div>
+      <div className="mb-6">
+        <div className="flex items-center justify-between">
+          <button
+            onClick={handleBack}
+            className="flex items-center text-gray-600 hover:text-gray-800 transition-colors"
+          >
+            <ArrowLeft size={20} className="mr-2" />
+            Geri Dön
+          </button>
+        </div>
 
-  <div className="mt-4 flex items-center">
-    <MapPin className="text-green-700 mr-2" size={24} />
-    <h1 className="text-2xl font-bold text-gray-800">Adres Düzenle</h1>
-  </div>
-</div>
+        <div className="mt-4 flex items-center">
+          <MapPin className="text-green-700 mr-2" size={24} />
+          <h1 className="text-2xl font-bold text-gray-800">Adres Düzenle</h1>
+        </div>
+      </div>
 
       {/* Mesajlar */}
       {error && (
         <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-6">
           {error}
-        </div>  
+        </div>
       )}
 
       {success && (
@@ -168,7 +169,6 @@ const EditAddress: React.FC = () => {
       {/* Form */}
       <div className="bg-white rounded-lg shadow-sm border p-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Adres Satırı 1 */}
           <div className="md:col-span-2">
             <label htmlFor="addressLine1" className="block text-sm font-medium text-gray-700 mb-2">
               Adres Satırı 1 <span className="text-red-500">*</span>
@@ -184,8 +184,6 @@ const EditAddress: React.FC = () => {
               required
             />
           </div>
-
-          {/* Adres Satırı 2 */}
           <div className="md:col-span-2">
             <label htmlFor="addressLine2" className="block text-sm font-medium text-gray-700 mb-2">
               Adres Satırı 2
@@ -200,8 +198,6 @@ const EditAddress: React.FC = () => {
               placeholder="Ek adres bilgisi (isteğe bağlı)"
             />
           </div>
-
-          {/* Şehir */}
           <div>
             <label htmlFor="city" className="block text-sm font-medium text-gray-700 mb-2">
               Şehir <span className="text-red-500">*</span>
@@ -217,8 +213,6 @@ const EditAddress: React.FC = () => {
               required
             />
           </div>
-
-          {/* Posta Kodu */}
           <div>
             <label htmlFor="postalCode" className="block text-sm font-medium text-gray-700 mb-2">
               Posta Kodu
@@ -233,8 +227,6 @@ const EditAddress: React.FC = () => {
               placeholder="Posta kodu"
             />
           </div>
-
-          {/* Ülke */}
           <div className="md:col-span-2">
             <label htmlFor="country" className="block text-sm font-medium text-gray-700 mb-2">
               Ülke <span className="text-red-500">*</span>
@@ -276,7 +268,6 @@ const EditAddress: React.FC = () => {
               </>
             )}
           </button>
-
           <button
             type="button"
             onClick={handleBack}

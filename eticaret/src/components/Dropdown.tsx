@@ -6,14 +6,14 @@ interface DropdownProps {
 }
 
 const Dropdown = ({ buttonLabel, children }: DropdownProps) => {
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef(null);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
         dropdownRef.current &&
-        !(dropdownRef.current as any).contains(event.target)
+        !dropdownRef.current.contains(event.target as Node)
       ) {
         setIsOpen(false);
       }
@@ -42,4 +42,3 @@ const Dropdown = ({ buttonLabel, children }: DropdownProps) => {
 };
 
 export default Dropdown;
-

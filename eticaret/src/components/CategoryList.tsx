@@ -13,7 +13,15 @@ async function getAllCategories() {
   }
 }
 
-// Kullanımı
-getAllCategories().then(categories => {
-  // Kategorileri kullan
+interface Category {
+  id: number;
+  name: string;
+}
+
+getAllCategories().then((categories: Category[]) => {
+  if (categories.length === 0) {
+    console.log("Kategori yok.");
+  } else {
+    categories.forEach((cat: Category) => console.log(cat.name));
+  }
 });

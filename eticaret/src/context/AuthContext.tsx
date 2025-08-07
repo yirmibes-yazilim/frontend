@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState, useCallback } from "react";
 import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 
@@ -22,6 +22,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [accessToken, setAccessToken] = useState<string | null>(Cookies.get("accessToken") || null);
   const [refreshToken, setRefreshToken] = useState<string | null>(Cookies.get("refreshToken") || null);
 
+  // logout fonksiyonunu useCallback ile tanımla (eslint için)
+  const logout = useCallback(() => {
+    setAccessToken(null);
+    setRefreshToken(null);
+    Object.keys(Cookies.get()).forEach((cookie) => {
+      Cookies.remove(cookie);
+    });
+    navigate("/");
+  }, [navigate]);
+
+  // login fonksiyonunda erişim tokenlarını güncelle
   const login = (
     accessTokenObj: { accessToken: string; accessTokenExpTime: string },
     refreshTokenObj: { refreshToken: string; refreshTokenExpTime: string }
@@ -41,15 +52,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     Cookies.set("refreshToken", refreshToken, {
       expires: new Date(refreshTokenExpTime),
     });
-  };
-
-  const logout = () => {
-    setAccessToken(null);
-    setRefreshToken(null);
-    Object.keys(Cookies.get()).forEach((cookie) => {
-      Cookies.remove(cookie);
-    });
-    navigate("/");
   };
 
   useEffect(() => {
@@ -109,7 +111,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     }, 300000); // 5 dakika
 
     return () => clearInterval(id);
-  }, []);
+  }, [logout]); // logout fonksiyonu artık bağımlılıklarda
 
   return (
     <AuthContext.Provider

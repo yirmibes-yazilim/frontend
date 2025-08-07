@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import instance from "../api/axiosInstance"; 
 import ProductItem from "./ProductItem";
 import { addFavorite, removeFavorite, getFavorites } from "../api/favoriteService";
-import { DEFAULT_COLS } from "../components/ColumnCounter"; // ortak sabiti içe aktarır
-import clsx from "clsx"; //değiştirilebilir css için clsx import edildi
+import { DEFAULT_COLS } from "../components/ColumnCounter";
+import clsx from "clsx";
 
 interface Product {
   id: number;
@@ -14,9 +14,14 @@ interface Product {
   imageUrl: string;
 }
 
+interface FavoriteItem {
+  productId?: number;
+  id?: number;
+}
+
 type ColCount = 1|2|3|4|5|6|7|8|9|10|11|12; 
 
-const COL_MAP: Record<ColCount, string> = { //Sütun sayı değerlerinin hangi grid-cols a denk geldiği belirlenir
+const COL_MAP: Record<ColCount, string> = {
   1:"grid-cols-1", 2:"grid-cols-2", 3:"grid-cols-3", 4:"grid-cols-4",
   5:"grid-cols-5", 6:"grid-cols-6", 7:"grid-cols-7", 8:"grid-cols-8",
   9:"grid-cols-9", 10:"grid-cols-10", 11:"grid-cols-11", 12:"grid-cols-12",
@@ -43,14 +48,15 @@ export const Products = () => {
       });
   }, []);
 
-    // Favori ürünleri çek
   useEffect(() => {
     getFavorites()
       .then((response) => {
         if (response.data.isSuccessful) {
-          // Eğer response.data.data productId dizisiyse:
-          setFavoriteIds(response.data.data.map((item: any) => item.productId ?? item.id));
-          // productId yoksa doğrudan id’yi alabilirsin
+          setFavoriteIds(
+            response.data.data.map((item: FavoriteItem) =>
+              typeof item.productId === "number" ? item.productId : (item.id ?? 0)
+            )
+          );
         }
       })
       .catch(() => setFavoriteIds([]));
@@ -62,7 +68,7 @@ export const Products = () => {
     setCols((Math.min(12, Math.max(1, val))) as ColCount);
   }, []);
 
-    useEffect(() => {
+  useEffect(() => {
     const handleStorage = () => {
       const saved = localStorage.getItem(COLS_KEY);
       const val = saved ? Number(saved) : DEFAULT_COLS;
@@ -71,7 +77,7 @@ export const Products = () => {
     window.addEventListener("storage", handleStorage);
     return () => window.removeEventListener("storage", handleStorage);
   }, []);
-    // Favori toggle fonksiyonu
+
   const handleToggleFavorite = (id: number, isFav: boolean) => {
     if (isFav) {
       removeFavorite(id).then(() => {

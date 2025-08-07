@@ -1,11 +1,11 @@
 import Cookies from "js-cookie";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";     //yönlendirme yapar
-import axiosInstance from"../api/axiosInstance";
+import { useNavigate } from "react-router-dom";
+import axiosInstance from "../api/axiosInstance";
 import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
-  const [email, setEmail] = useState("");              //Form verilerini ve olası hata mesajlarını tutan state’ler
+  const [email, setEmail] = useState("");         
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -15,26 +15,26 @@ const Login = () => {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setError("");                                   //önceki hatayı temizler
-
+    setError("");   
 
     try {
-    const response = await axiosInstance.post("/Auth/login", {
+      const response = await axiosInstance.post("/Auth/login", {
         email,
         password,
-    });
+      });
 
-    const result = response.data;
+      const result = response.data;
 
-    if (result.isSuccessful) {
-      // Backend'den gelen accessToken ve refreshToken isimlerine dikkat et!
-      const accessToken = result.data.accessToken;
-      const refreshToken = result.data.refreshToken;
-      login(accessToken); // Context ve localStorage ile uyumlu
-      Cookies.set("accessToken", result.data.accessToken.accessToken);   // Cookie'ye ekle
-      Cookies.set("refreshToken", result.data.refreshToken.refreshToken); // Cookie'ye ekle
-      alert("Giriş başarılı!");
-      navigate("/");
+      if (result.isSuccessful) {
+        // Backend'den gelen accessToken ve refreshToken objelerini al
+        const accessToken = result.data.accessToken;
+        const refreshToken = result.data.refreshToken;
+        login(accessToken, refreshToken); // İki parametre gönder
+        // Token'ları cookie'ye ekle
+        Cookies.set("accessToken", accessToken.accessToken);
+        Cookies.set("refreshToken", refreshToken.refreshToken);
+        alert("Giriş başarılı!");
+        navigate("/");
       } else {
         setError(result.message || "Giriş başarısız!");
       }
@@ -42,17 +42,8 @@ const Login = () => {
       console.error("Login error:", err);
       setError("Sunucuyla bağlantı kurulamadı.");
     } finally {
-      setLoading(false); //loading durumunu sıfırlar, buton tekrar aktif hale gelir
+      setLoading(false);
     }
-   
-};
-
-    const token = Cookies.get("token");
-    fetch("http://localhost:5173/api/addresses", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
   };
 
   return (
