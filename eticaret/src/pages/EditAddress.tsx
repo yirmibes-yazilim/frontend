@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowLeft, Save, MapPin } from 'lucide-react';
+<<<<<<< HEAD
 import axiosInstance from '../api/axiosInstance';
 import { useParams } from 'react-router-dom';
+=======
+>>>>>>> ayca
 
 
 interface Address {
   id: number;
+<<<<<<< HEAD
+=======
+  userId?: number;
+>>>>>>> ayca
   addressLine1: string;
   addressLine2: string;
   city: string;
@@ -22,18 +29,41 @@ interface ApiResponse {
   message: string;
 }
 
+<<<<<<< HEAD
 const EditAddress: React.FC = () => {
   const { id } = useParams();
   const addressId = Number(id);
 
   const [address, setAddress] = useState<Address>({
     id: addressId,
+=======
+interface EditAddressProps {
+  addressId?:number;
+  userId?:number;
+  onBack?: () => void;
+  onSave?: (address: Address) => void;
+}
+
+const EditAddress: React.FC<EditAddressProps> = ({ 
+  addressId = 2,
+  userId = 8, 
+  onBack,
+  onSave 
+}) => {
+  const [address, setAddress] = useState<Address>({
+    id: 0,
+    userId: userId,
+>>>>>>> ayca
     addressLine1: '',
     addressLine2: '',
     city: '',
     postalCode: '',
     country: '',
+<<<<<<< HEAD
     isDefault: false,
+=======
+    isDefault: false
+>>>>>>> ayca
   });
 
   const [loading, setLoading] = useState<boolean>(false);
@@ -41,21 +71,45 @@ const EditAddress: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
 
+<<<<<<< HEAD
 
   // Adresi getir
   const fetchAddress = async () => {
+=======
+  const API_BASE_URL = "http://192.168.25.136:5102/api";
+
+  // Adresi getir
+  const fetchAddress = async (): Promise<void> => {
+>>>>>>> ayca
     setLoading(true);
     setError(null);
     
     try {
+<<<<<<< HEAD
       const response = await axiosInstance.get<ApiResponse>(`/Addresses/getById/${addressId}`);
       const result = response.data;
+=======
+      const response = await fetch(`${API_BASE_URL}/Addresses/getById/${addressId}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          // Authorization: `Bearer ${token}` // Gerekirse token ekleyin
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error('Adres getirilemedi');
+      }
+
+      const result: ApiResponse = await response.json();
+>>>>>>> ayca
       
       if (result.isSuccessful && result.data) {
         setAddress(result.data);
       } else {
         setError(result.error || 'Adres getirilemedi');
       }
+<<<<<<< HEAD
     } catch (err: any) {
       setError(err.response?.data?.error || 'Bir hata oluştu');
     } finally {
@@ -86,12 +140,64 @@ const EditAddress: React.FC = () => {
       }
     } catch (err: any) {
       setError(err.response?.data?.error || 'Bir hata oluştu');
+=======
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Bir hata oluştu');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // Adresi güncelle
+  const updateAddress = async (): Promise<void> => {
+    setSaving(true);
+    setError(null);
+    setSuccess(null);
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/Addresses/update`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          // Authorization: `Bearer ${token}` // Gerekirse token ekleyin
+        },
+        body: JSON.stringify({
+          id: address.id,
+          userId: address.userId,
+          addressLine1: address.addressLine1,
+          addressLine2: address.addressLine2,
+          city: address.city,
+          postalCode: address.postalCode,
+          country: address.country
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Adres güncellenemedi');
+      }
+
+      const result = await response.json();
+      
+      if (result.isSuccessful) {
+        setSuccess(result.message || 'Adres başarıyla güncellendi!');
+        if (onSave) {
+          onSave(address);
+        }
+      } else {
+        setError(result.error || 'Güncelleme başarısız');
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Bir hata oluştu');
+>>>>>>> ayca
     } finally {
       setSaving(false);
     }
   };
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> ayca
   // Component mount olduğunda adresi getir
   useEffect(() => {
     fetchAddress();
@@ -118,8 +224,18 @@ const EditAddress: React.FC = () => {
   };
 
   // Geri dön
+<<<<<<< HEAD
   const handleBack = () => {
     window.history.back();
+=======
+  const handleBack = (): void => {
+    if (onBack) {
+      onBack();
+    } else {
+      // Varsayılan geri dönme işlemi
+      window.history.back();
+    }
+>>>>>>> ayca
   };
 
   if (loading) {
@@ -136,6 +252,7 @@ const EditAddress: React.FC = () => {
   return (
     <div className="max-w-2xl mx-auto p-6">
       {/* Header */}
+<<<<<<< HEAD
 <div className="mb-6">
   <div className="flex items-center justify-between">
     <button
@@ -152,12 +269,31 @@ const EditAddress: React.FC = () => {
     <h1 className="text-2xl font-bold text-gray-800">Adres Düzenle</h1>
   </div>
 </div>
+=======
+      <div className="flex items-center mb-6">
+        <button
+          onClick={handleBack}
+          className="flex items-center text-gray-600 hover:text-gray-800 transition-colors mr-4"
+        >
+          <ArrowLeft size={20} className="mr-2" />
+          Geri Dön
+        </button>
+        <div className="flex items-center">
+          <MapPin className="text-orange-500 mr-2" size={24} />
+          <h1 className="text-2xl font-bold text-gray-800">Adres Düzenle</h1>
+        </div>
+      </div>
+>>>>>>> ayca
 
       {/* Mesajlar */}
       {error && (
         <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-6">
           {error}
+<<<<<<< HEAD
         </div>  
+=======
+        </div>
+>>>>>>> ayca
       )}
 
       {success && (
@@ -262,7 +398,11 @@ const EditAddress: React.FC = () => {
             className={`flex items-center justify-center px-6 py-3 rounded-lg font-semibold transition-colors ${
               saving
                 ? 'bg-gray-400 cursor-not-allowed'
+<<<<<<< HEAD
                 : 'bg-green-700 hover:bg-green-800 text-white'
+=======
+                : 'bg-orange-500 hover:bg-orange-600 text-white'
+>>>>>>> ayca
             }`}
           >
             {saving ? (
@@ -303,3 +443,7 @@ const EditAddress: React.FC = () => {
 };
 
 export default EditAddress;
+<<<<<<< HEAD
+=======
+
+>>>>>>> ayca

@@ -19,7 +19,11 @@ import UserAddresses from "./pages/UserAddress";
 import AddAddress from "./pages/AddAddresses";
 import EditAddress from "./pages/EditAddress";
 
-function App() {
+
+
+
+
+export function App() {
   const location = useLocation();
   const showProducts = location.pathname === "/";
   const isAdminPage = location.pathname.startsWith("/admin/");

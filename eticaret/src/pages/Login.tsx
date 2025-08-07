@@ -1,7 +1,7 @@
+import Cookies from "js-cookie";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";     //yönlendirme yapar
 import axiosInstance from"../api/axiosInstance";
-import Cookies from "js-cookie";
 import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
@@ -12,8 +12,8 @@ const Login = () => {
   const navigate = useNavigate();
   const { login } = useAuth();
 
-  const handleLogin = async (e: React.FormEvent) => {     //form gönderildiğinde çalışır (React'e, bu e parametresinin bir "form olayı" olduğunu söyler.)
-    e.preventDefault();                             // Tarayıcının formu otomatik göndermesini (ve sayfayı yenilemesini) durdurur
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
     setLoading(true);
     setError("");                                   //önceki hatayı temizler
 
@@ -47,7 +47,13 @@ const Login = () => {
    
 };
 
- 
+    const token = Cookies.get("token");
+    fetch("http://localhost:5173/api/addresses", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  };
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 px-4">
@@ -101,7 +107,7 @@ const Login = () => {
 
         <button
           type="submit"
-          disabled={loading}            //buton tıklanamaz hale gelir,aynı anda birden fazla istek atılması engellenir
+          disabled={loading}
           className="w-full bg-blue-500 text-white font-semibold py-2 rounded-md hover:bg-blue-600 transition"
         >
           {loading ? "Giriş Yapılıyor..." : "Giriş Yap"}
