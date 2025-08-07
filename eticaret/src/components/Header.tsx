@@ -65,17 +65,10 @@ const Header = () => {
             <div className="absolute right-0 bg-white shadow-lg rounded-lg mt-2 w-48 z-50">
               <ul className="py-2">
                 <li
-<<<<<<< HEAD
-                  onClick={() => navigate("/login")}
-                  className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                >
-                  Login
-=======
                   onClick={() => navigate("/profile")}
                   className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
                 >
                   Profil
->>>>>>> ayca
                 </li>
                 <li
                   onClick={() => navigate("/cartpage")}
@@ -108,10 +101,6 @@ const Header = () => {
   );
 };
 
-<<<<<<< HEAD
-export default Header;
-=======
 export default Header;
 
         
->>>>>>> ayca
