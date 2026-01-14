@@ -13,10 +13,13 @@ const EmailConfirmationSend = () => {
       try {
         const response = await sendConfirmationEmail(Number(userId));
 
-        if (response.isSuccessful) {
+        // Type assertion for response
+        const typedResponse = response as { isSuccessful: boolean; message?: string };
+
+        if (typedResponse.isSuccessful) {
           setMessage("Doğrulama kodu e-posta adresinize gönderildi.");
         } else {
-          setError(response.message || "Kod gönderilemedi.");
+          setError(typedResponse.message || "Kod gönderilemedi.");
         }
       } catch (err) {
         console.error("E-posta gönderme hatası:", err);

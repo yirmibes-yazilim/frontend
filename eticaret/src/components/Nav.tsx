@@ -1,8 +1,7 @@
 import Dropdown from "./Dropdown";
-
+import { Link } from 'react-router-dom'; 
 
 const Nav = () => {
-    
     return(
         <div className="flex justify-center items-center my-6 mx-10 bg-blue-300 h-8 ">
             <div className="w-1/6 mx-6">
@@ -39,6 +38,20 @@ const Nav = () => {
                 <a href="https://yirmibes.com.tr/?gad_source=1" className="block px-4 py-2 hover:text-white">Yazılım Çözümleri</a>
                 
             </div>
+            <div className="w-1/6 mx-6">
+                <Link to="/favorites" className="block px-4 py-2 hover:text-white">
+                    ❤️ Favoriler
+                </Link>
+            </div>
+           
+
+            <div className="w-1/6 mx-6">
+                <Link to="/cartpage" className="block px-4 py-2 hover:text-white">
+                    🛒 Sepetim
+                </Link>
+            </div>
+
+            
         </div>
     )
 }

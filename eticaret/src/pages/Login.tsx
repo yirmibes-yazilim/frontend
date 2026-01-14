@@ -1,34 +1,38 @@
+import Cookies from "js-cookie";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";     //yönlendirme yapar
-
-import axiosInstance from"../api/axiosInstance";
-
-
+import { useNavigate } from "react-router-dom";
+import axiosInstance from "../api/axiosInstance";
+import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
-  const [email, setEmail] = useState("");              //Form verilerini ve olası hata mesajlarını tutan state’ler
+  const [email, setEmail] = useState("");         
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  //const { login } = useAuth();
+  const { login } = useAuth();
 
-  const handleLogin = async (e: React.FormEvent) => {     //form gönderildiğinde çalışır (React'e, bu e parametresinin bir "form olayı" olduğunu söyler.)
-    e.preventDefault();                             // Tarayıcının formu otomatik göndermesini (ve sayfayı yenilemesini) durdurur
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
     setLoading(true);
-    setError("");                                   //önceki hatayı temizler
-
+    setError("");   
 
     try {
-    const response = await axiosInstance.post("/Auth/login", {
+      const response = await axiosInstance.post("/Auth/login", {
         email,
         password,
-    });
+      });
 
-    const result = response.data;
+      const result = response.data;
 
-    if (result.isSuccessful) {
-        //login(result.data); // <-- context login işlemi
+      if (result.isSuccessful) {
+        // Backend'den gelen accessToken ve refreshToken objelerini al
+        const accessToken = result.data.accessToken;
+        const refreshToken = result.data.refreshToken;
+        login(accessToken, refreshToken); // İki parametre gönder
+        // Token'ları cookie'ye ekle
+        Cookies.set("accessToken", accessToken.accessToken);
+        Cookies.set("refreshToken", refreshToken.refreshToken);
         alert("Giriş başarılı!");
         navigate("/");
       } else {
@@ -38,12 +42,9 @@ const Login = () => {
       console.error("Login error:", err);
       setError("Sunucuyla bağlantı kurulamadı.");
     } finally {
-      setLoading(false); //loading durumunu sıfırlar, buton tekrar aktif hale gelir
+      setLoading(false);
     }
-   
-};
-
- 
+  };
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 px-4">
@@ -97,7 +98,7 @@ const Login = () => {
 
         <button
           type="submit"
-          disabled={loading}            //buton tıklanamaz hale gelir,aynı anda birden fazla istek atılması engellenir
+          disabled={loading}
           className="w-full bg-blue-500 text-white font-semibold py-2 rounded-md hover:bg-blue-600 transition"
         >
           {loading ? "Giriş Yapılıyor..." : "Giriş Yap"}

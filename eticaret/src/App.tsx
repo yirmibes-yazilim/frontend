@@ -1,28 +1,32 @@
-
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation } from "react-router-dom";
 import Header from "./components/Header";
 import Products from "./components/Products";
-import Login from './pages/Login';
-import Register from './pages/Register';
-import Nav from './components/Nav';
-import Favorites from './pages/Favorites';
-import AdminLogin from './pages/AdminLogin';
-import AdminHome from './pages/AdminHome';
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Nav from "./components/Nav";
+import Favorites from "./pages/Favorites";
+import AdminLogin from "./pages/AdminLogin";
+import AdminHome from "./pages/AdminHome";
 import EmailConfirmationSend from "./pages/EmailConfirmationSend";
 import EmailVerify from "./pages/EmailVerify";
-import AdminProductsPage from './pages/AdminProductsPage';
-import AdminLayout from './components/AdminLayout';
-import AdminCategoriesPage from './pages/AdminCategoriesPage';
-import Footer from './components/Footer';
+import AdminProductsPage from "./pages/AdminProductsPage";
+import AdminLayout from "./components/AdminLayout";
+import AdminCategoriesPage from "./pages/AdminCategoriesPage";
+import Footer from "./components/Footer";
+import CartInterface from "./pages/CartPage";
+import AdminConfig from "./pages/AdminConfiguraiton";
+import UserAddresses from "./pages/UserAddress";
+import AddAddress from "./pages/AddAddresses";
+import EditAddress from "./pages/EditAddress";
 
 
 
 
 
-function App() {
+export function App() {
   const location = useLocation();
-  const showProducts = location.pathname === '/';   //Products için anasayfa kontrolü
-  const isAdminPage = location.pathname.startsWith('/admin/');   //Admin sayfası mı 
+  const showProducts = location.pathname === "/";
+  const isAdminPage = location.pathname.startsWith("/admin/");
 
   return (
     <>
@@ -32,37 +36,33 @@ function App() {
         {!isAdminPage && <Header />}
         {!isAdminPage && <Nav />}
 
-        
         <Routes>
+          <Route path="/" element={null} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/favorites" element={<Favorites/>}/>
+          <Route path="/favorites" element={<Favorites />} />
           <Route path="/send-confirmation/:userId" element={<EmailConfirmationSend />} />
           <Route path="/verify-email" element={<EmailVerify />} />
-          
+          <Route path="/cartpage" element={<CartInterface />} />
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/addresses" element={<UserAddresses />} />
+          <Route path="/addressadd" element={<AddAddress />} />
+          <Route path="/addressedit/:id" element={<EditAddress />} />
 
-          <Route path="/admin/login" element={<AdminLogin/>}/>
 
           <Route path="/admin" element={<AdminLayout />}>
             <Route path="home" element={<AdminHome />} />
             <Route path="adminproducts" element={<AdminProductsPage />} />
-            <Route path="admincategories" element={<AdminCategoriesPage/>} />
-          
+            <Route path="admincategories" element={<AdminCategoriesPage />} />
+            <Route path="configuration" element={<AdminConfig />} />
           </Route>
-          
-           
-            
-            
-          
-          
         </Routes>
+
         {showProducts && <Products />}
         {showProducts && <Footer />}
       </div>
-     
     </>
-  )
+  );
 }
 
-export default App
-
+export default App;

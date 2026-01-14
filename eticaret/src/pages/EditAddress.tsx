@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { ArrowLeft, Save, MapPin } from 'lucide-react';
 import axiosInstance from '../api/axiosInstance';
-
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 interface Address {
   id: number;
-  userId?: number;
   addressLine1: string;
   addressLine2: string;
   city: string;
@@ -22,28 +22,18 @@ interface ApiResponse {
   message: string;
 }
 
-interface EditAddressProps {
-  addressId?:number;
-  userId?:number;
-  onBack?: () => void;
-  onSave?: (address: Address) => void;
-}
+const EditAddress: React.FC = () => {
+  const { id } = useParams();
+  const addressId = Number(id);
 
-const EditAddress: React.FC<EditAddressProps> = ({ 
-  addressId = 2,
-  userId = 10, 
-  onBack,
-  onSave 
-}) => {
   const [address, setAddress] = useState<Address>({
-    id: 0,
-    userId: userId,
+    id: addressId,
     addressLine1: '',
     addressLine2: '',
     city: '',
     postalCode: '',
     country: '',
-    isDefault: false
+    isDefault: false,
   });
 
   const [loading, setLoading] = useState<boolean>(false);
@@ -51,71 +41,66 @@ const EditAddress: React.FC<EditAddressProps> = ({
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
 
-
   // Adresi getir
-  const fetchAddress = async (): Promise<void> => {
+  const fetchAddress = useCallback(async () => {
     setLoading(true);
     setError(null);
-    
+
     try {
       const response = await axiosInstance.get<ApiResponse>(`/Addresses/getById/${addressId}`);
       const result = response.data;
-      
+
       if (result.isSuccessful && result.data) {
         setAddress(result.data);
       } else {
         setError(result.error || 'Adres getirilemedi');
       }
-    } catch (err: any) {
-      setError(err.response?.data?.error || 'Bir hata oluştu');
+    } catch (err: unknown) {
+      if (axios.isAxiosError(err) && err.response?.data?.error) {
+        setError(err.response.data.error);
+      } else {
+        setError('Bir hata oluştu');
+      }
     } finally {
       setLoading(false);
     }
-    
-  };
+  }, [addressId]);
 
   // Adresi güncelle
-  const updateAddress = async (): Promise<void> => {
+  const updateAddress = async () => {
     setSaving(true);
     setError(null);
     setSuccess(null);
-
-    
     try {
       const response = await axiosInstance.put<ApiResponse>(`/Addresses/update`, {
         id: address.id,
-        userId: address.userId,
         addressLine1: address.addressLine1,
         addressLine2: address.addressLine2,
         city: address.city,
         postalCode: address.postalCode,
         country: address.country,
       });
-
       const result = response.data;
-
       if (result.isSuccessful) {
         setSuccess(result.message || 'Adres başarıyla güncellendi!');
-        if (onSave) {
-          onSave(address);
-        }
       } else {
         setError(result.error || 'Güncelleme başarısız');
       }
-    } catch (err: any) {
-      setError(err.response?.data?.error || 'Bir hata oluştu');
+    } catch (err: unknown) {
+      if (axios.isAxiosError(err) && err.response?.data?.error) {
+        setError(err.response.data.error);
+      } else {
+        setError('Bir hata oluştu');
+      }
     } finally {
       setSaving(false);
     }
   };
 
-
-  // Component mount olduğunda adresi getir
   useEffect(() => {
     fetchAddress();
-  }, [addressId]);
+  }, [fetchAddress]);
 
-  // Input değişikliklerini handle et
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     const { name, value } = e.target;
     setAddress(prev => ({
@@ -124,9 +109,7 @@ const EditAddress: React.FC<EditAddressProps> = ({
     }));
   };
 
-  // Form submit
   const handleSubmit = (): void => {
-    // Basit validasyon
     if (!address.addressLine1.trim() || !address.city.trim() || !address.country.trim()) {
       setError('Lütfen zorunlu alanları doldurun');
       return;
@@ -135,14 +118,8 @@ const EditAddress: React.FC<EditAddressProps> = ({
     updateAddress();
   };
 
-  // Geri dön
-  const handleBack = (): void => {
-    if (onBack) {
-      onBack();
-    } else {
-      // Varsayılan geri dönme işlemi
-      window.history.back();
-    }
+  const handleBack = () => {
+    window.history.back();
   };
 
   if (loading) {
@@ -159,16 +136,19 @@ const EditAddress: React.FC<EditAddressProps> = ({
   return (
     <div className="max-w-2xl mx-auto p-6">
       {/* Header */}
-      <div className="flex items-center mb-6">
-        <button
-          onClick={handleBack}
-          className="flex items-center text-gray-600 hover:text-gray-800 transition-colors mr-4"
-        >
-          <ArrowLeft size={20} className="mr-2" />
-          Geri Dön
-        </button>
-        <div className="flex items-center">
-          <MapPin className="text-orange-500 mr-2" size={24} />
+      <div className="mb-6">
+        <div className="flex items-center justify-between">
+          <button
+            onClick={handleBack}
+            className="flex items-center text-gray-600 hover:text-gray-800 transition-colors"
+          >
+            <ArrowLeft size={20} className="mr-2" />
+            Geri Dön
+          </button>
+        </div>
+
+        <div className="mt-4 flex items-center">
+          <MapPin className="text-green-700 mr-2" size={24} />
           <h1 className="text-2xl font-bold text-gray-800">Adres Düzenle</h1>
         </div>
       </div>
@@ -189,7 +169,6 @@ const EditAddress: React.FC<EditAddressProps> = ({
       {/* Form */}
       <div className="bg-white rounded-lg shadow-sm border p-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Adres Satırı 1 */}
           <div className="md:col-span-2">
             <label htmlFor="addressLine1" className="block text-sm font-medium text-gray-700 mb-2">
               Adres Satırı 1 <span className="text-red-500">*</span>
@@ -205,8 +184,6 @@ const EditAddress: React.FC<EditAddressProps> = ({
               required
             />
           </div>
-
-          {/* Adres Satırı 2 */}
           <div className="md:col-span-2">
             <label htmlFor="addressLine2" className="block text-sm font-medium text-gray-700 mb-2">
               Adres Satırı 2
@@ -221,8 +198,6 @@ const EditAddress: React.FC<EditAddressProps> = ({
               placeholder="Ek adres bilgisi (isteğe bağlı)"
             />
           </div>
-
-          {/* Şehir */}
           <div>
             <label htmlFor="city" className="block text-sm font-medium text-gray-700 mb-2">
               Şehir <span className="text-red-500">*</span>
@@ -238,8 +213,6 @@ const EditAddress: React.FC<EditAddressProps> = ({
               required
             />
           </div>
-
-          {/* Posta Kodu */}
           <div>
             <label htmlFor="postalCode" className="block text-sm font-medium text-gray-700 mb-2">
               Posta Kodu
@@ -254,8 +227,6 @@ const EditAddress: React.FC<EditAddressProps> = ({
               placeholder="Posta kodu"
             />
           </div>
-
-          {/* Ülke */}
           <div className="md:col-span-2">
             <label htmlFor="country" className="block text-sm font-medium text-gray-700 mb-2">
               Ülke <span className="text-red-500">*</span>
@@ -282,7 +253,7 @@ const EditAddress: React.FC<EditAddressProps> = ({
             className={`flex items-center justify-center px-6 py-3 rounded-lg font-semibold transition-colors ${
               saving
                 ? 'bg-gray-400 cursor-not-allowed'
-                : 'bg-orange-500 hover:bg-orange-600 text-white'
+                : 'bg-green-700 hover:bg-green-800 text-white'
             }`}
           >
             {saving ? (
@@ -297,7 +268,6 @@ const EditAddress: React.FC<EditAddressProps> = ({
               </>
             )}
           </button>
-
           <button
             type="button"
             onClick={handleBack}
